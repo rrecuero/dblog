@@ -34,13 +34,13 @@ contract Post is PostFactory, ERC721 {
   }
 
   function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
-    // zombieApprovals[_tokenId] = _to;
-    // Approval(msg.sender, _to, _tokenId);
+    blogApprovals[_tokenId] = _to;
+    Approval(msg.sender, _to, _tokenId);
   }
 
   function takeOwnership(uint256 _tokenId) public {
-    // require(zombieApprovals[_tokenId] == msg.sender);
-    // address owner = ownerOf(_tokenId);
-    // _transfer(owner, msg.sender, _tokenId);
+    require(blogApprovals[_tokenId] == msg.sender);
+    address owner = ownerOf(_tokenId);
+    _transfer(owner, msg.sender, _tokenId);
   }
 }
