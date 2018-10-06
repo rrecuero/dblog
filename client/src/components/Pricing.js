@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Checkout from './Checkout';
 
 class Pricing extends Component {
-  state = { userId: this.props.auth && this.props.auth.userProfile };
-  componentDidMount() {
-    if (this.props.auth && !this.props.auth.userProfile) {
-      this.props.auth.getProfile((err, profile) => {
-        this.setState({ userId: profile.sub });
-      });
-    }
-  }
+  // state = { userId: this.props.auth && this.props.auth.userProfile };
+  // componentDidMount() {
+  //   if (this.props.auth && !this.props.auth.userProfile) {
+  //     this.props.auth.getProfile((err, profile) => {
+  //       this.setState({ userId: profile.sub });
+  //     });
+  //   }
+  // }
 
   render() {
     return (
@@ -47,10 +47,10 @@ class Pricing extends Component {
                   </li>
                 </ul>
                 <div class="pricing-03__button">
-                  {this.props.auth && this.state.userId &&
+                  {this.props.auth && this.props.auth && this.props.auth.userProfile &&
                     <Checkout
                       apiToken={this.props.auth.getAccessToken()}
-                      userId= {this.state.userId}
+                      userId= {this.props.auth && this.props.auth.userProfile.sub}
                       name={'dBlog Subscription'}
                       description={'One Month'}
                       amount={9}

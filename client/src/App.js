@@ -18,7 +18,7 @@ const NoMatch = ({ location }) => (
 );
 
 
-class App extends Component {
+class App extends React.PureComponent {
   state = { loading: true, drizzleState: null };
 
   componentDidMount() {
@@ -155,7 +155,7 @@ class App extends Component {
                 !this.props.auth.isAuthenticated() || !this.props.auth.hasPaid()? (
                   <Redirect to="/"/>
                 ) : (
-                  <Blog auth={this.props.auth} {...props} />
+                  <Blog drizzle={this.props.drizzle} auth={this.props.auth} {...props} />
                 )
               )} />
               <Route component={NoMatch} />

@@ -116,6 +116,10 @@ export default class Auth {
     return new Date().getTime() < expiresAt;
   }
 
+  hasPaid() {
+    return JSON.parse(localStorage.getItem('expires_at'));
+  }
+
   login() {
     this.auth0.authorize();
   }
