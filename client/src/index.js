@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Callback from './containers/Callback';
 import Profile from './containers/Profile';
+import Posts from './containers/Posts';
 import registerServiceWorker from './utils/registerServiceWorker';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Auth from './auth/Auth';
 
@@ -60,6 +61,20 @@ ReactDOM.render((
                 handleAuthentication(props);
                 return <Callback {...props} />
               }}/>
+              <Route path="/myposts" render={(props) => (
+                !auth.isAuthenticated() ? (
+                  <Redirect to="/"/>
+                ) : (
+                  <Posts auth={auth} {...props} />
+                )
+              )} />
+              <Route path="/admin" render={(props) => (
+                !auth.isAuthenticated() || !auth.userHasScopes(['write:posts']) ? (
+                  <Redirect to="/"/>
+                ) : (
+                  <h1> Admin </h1>
+                )
+              )} />
             </Switch>
           </Router>
         </LoadingContainer>

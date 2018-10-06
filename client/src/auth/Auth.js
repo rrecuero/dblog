@@ -2,13 +2,15 @@ import auth0 from 'auth0-js';
 
 export default class Auth {
 
+  requestedScopes = 'openid profile read:messages write:messages';
   constructor(history) {
     this.auth0 = new auth0.WebAuth({
       domain: 'dapis.auth0.com',
       clientID: 'EcDmjEPPOYAnBiY9o0jSEsukqdCfITdW',
+      audience: 'https://dblog.dapis.io/api',
       redirectUri: 'http://localhost:3000/callback',
       responseType: 'token id_token',
-      scope: 'openid profile'
+      scope: this.requestedScopes
     });
     this.history = history;
     this.login = this.login.bind(this);
@@ -31,11 +33,13 @@ export default class Auth {
   }
 
   setSession(authResult) {
+    const scopes = authResult.scope || this.requestedScopes || '';
     // Set the time that the Access Token will expire at
     let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('scopes', JSON.stringify(scopes));
     // navigate to the home route
     this.history.replace('/');
   }
@@ -56,6 +60,11 @@ export default class Auth {
       }
       cb(err, profile);
     });
+  }
+
+  userHasScopes(scopes) {
+    const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
   logout() {

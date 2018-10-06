@@ -62,8 +62,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('this.props.auth', this.props);
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, userHasScopes } = this.props.auth;
     if (this.state.loading) {
       return "Loading Drizzle...";
     }
@@ -103,6 +102,15 @@ class App extends Component {
             onClick={this.logout.bind(this)}
           >
             Log Out
+          </button>
+        )}
+        {isAuthenticated() &&  userHasScopes(['write:posts']) && (
+          <button
+            bsStyle="primary"
+            className="btn-margin"
+            onClick={this.goTo.bind(this, 'admin')}
+          >
+            Admin
           </button>
         )}
       </div>
