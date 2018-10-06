@@ -3,7 +3,7 @@ pragma solidity ^0.4.19;
 import "./ownable.sol";
 import "./safemath.sol";
 
-contract postFactory is Ownable {
+contract PostFactory is Ownable {
 
   using SafeMath for uint256;
 
@@ -19,8 +19,8 @@ contract postFactory is Ownable {
   mapping (uint => address) public postToOwner;
   mapping (address => uint) ownerPostCount;
 
-  function createPost(string _ipfsHash) public {
-    uint id = posts.push(Post(_ipfsHash)) - 1;
+  function createPost(string _ipfsHash, string hash) public {
+    uint id = posts.push(Post(_ipfsHash, hash)) - 1;
     postToOwner[id] = msg.sender;
     ownerPostCount[msg.sender]++;
     NewPost(_ipfsHash);
