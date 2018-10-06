@@ -7,7 +7,7 @@ export const config = {
       autoReconnect: true,
       connectTimeoutMS: 10000
     },
-    dbname: 'heroku_83k552gr',
+    dbname: 'heroku_nx9rz983',
     url: "mongodb://...",
     reconnectAttempts: 3
   },
@@ -15,6 +15,9 @@ export const config = {
   Stripe: {
     test: 'sk_live_MY_SECRET_KEY',
     live: 'sk_test_MY_SECRET_KEY'
+  },
+  auth0: {
+    domain: 'dapis.auth0.com'
   },
   // Mail
   Mandrill: {

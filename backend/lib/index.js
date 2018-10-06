@@ -7,7 +7,10 @@ import compression from 'compression';
 import path from 'path';
 import expressWinston from 'express-winston';
 import jwt from 'express-jwt';
+import jwksRsa from 'jwks-rsa';
 import UserManager from '../users/userManager';
+// import jwtAuthz from 'express-jwt-authz';
+// const checkScopes = jwtAuthz([ 'read:messages' ]);
 
 
 const app = express();
@@ -37,7 +40,15 @@ app.use(cleanMongo);
 // ignore authentication on the following routes
 app.use(
   jwt({
-    secret: config.jwt.secret
+    secret: jwksRsa.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `https://${config.get('auth0').domain}/.well-known/jwks.json`
+    }),
+    audience: 'https://dblog.dapis.io/api',
+    issuer: `https://${config.get('auth0').domain}`,
+    algorithms: ['RS256']
   }).unless((req) => {
     const unprivilegedPaths = [
       '/api/ping',
