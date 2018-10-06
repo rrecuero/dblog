@@ -23,6 +23,20 @@ class Home extends Component {
     });
   }
 
+//   <Checkout
+//    name={'The Road to learn React'}
+//    description={'Only the Book'}
+//    amount={1}
+//  />
+// <ReadString
+//   drizzle={this.props.drizzle}
+//   drizzleState={this.state.drizzleState}
+// />
+// <SetString
+//   drizzle={this.props.drizzle}
+//   drizzleState={this.state.drizzleState}
+// />
+
   compomentWillUnmount() {
     this.unsubscribe();
   }
