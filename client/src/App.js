@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import ReadString from "./components/ReadString";
 import SetString from "./components/SetString";
 import Checkout from './components/Checkout';
+import Auth from './components/Auth.js';
+
 import './App.scss';
 
 class App extends Component {
@@ -23,6 +25,16 @@ class App extends Component {
       }
     });
     this.ping();
+    const auth = new Auth();
+    auth.login();
+  }
+
+  login() {
+    this.props.auth.login();
+  }
+
+  logout() {
+    this.props.auth.logout();
   }
 
   ping() {
@@ -53,6 +65,7 @@ class App extends Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth;
     if (this.state.loading) {
       return "Loading Drizzle...";
     }
@@ -78,6 +91,22 @@ class App extends Component {
             drizzleState={this.state.drizzleState}
           />
         </div>
+        {!isAuthenticated() && (
+          <button
+            className="btn-margin"
+            onClick={this.login.bind(this)}>
+            Log In
+          </button>
+        )}
+        {isAuthenticated() && (
+          <button
+            bsStyle="primary"
+            className="btn-margin"
+            onClick={this.logout.bind(this)}
+          >
+            Log Out
+          </button>
+        )}
       </div>
     );
   }
