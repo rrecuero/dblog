@@ -7,7 +7,7 @@ export const config = {
       autoReconnect: true,
       connectTimeoutMS: 10000
     },
-    dbname: 'heroku_83k552gr',
+    dbname: 'heroku_nx9rz983',
     url: "mongodb://...",
     reconnectAttempts: 3
   },

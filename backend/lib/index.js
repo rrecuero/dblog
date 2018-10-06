@@ -7,10 +7,10 @@ import compression from 'compression';
 import path from 'path';
 import expressWinston from 'express-winston';
 import jwt from 'express-jwt';
-// import jwtAuthz from 'express-jwt-authz';
-// const checkScopes = jwtAuthz([ 'read:messages' ]);
 import jwksRsa from 'jwks-rsa';
 import UserManager from '../users/userManager';
+// import jwtAuthz from 'express-jwt-authz';
+// const checkScopes = jwtAuthz([ 'read:messages' ]);
 
 
 const app = express();
