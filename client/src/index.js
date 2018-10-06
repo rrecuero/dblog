@@ -22,14 +22,14 @@ import 'font-awesome/css/font-awesome.min.css';
 // import 'bulma/bulma.sass';
 import './index.scss';
 
-//Auth0
-const auth = new Auth();
 // let drizzle know what contracts we want
 const options = { contracts: [MyStringStore] };
 // setup the drizzle store and drizzle
 const drizzleStore = generateStore(options);
 const drizzle = new Drizzle(options, drizzleStore);
 const history = createBrowserHistory();
+//Auth0
+const auth = new Auth(history);
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
