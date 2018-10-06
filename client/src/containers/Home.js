@@ -40,6 +40,7 @@ class Home extends Component {
       return "Loading Drizzle...";
     }
     const { isAuthenticated, userHasScopes } = this.props.auth;
+    console.log('isAuthenticated()', isAuthenticated());
     return (
       <div className="home">
         <Checkout

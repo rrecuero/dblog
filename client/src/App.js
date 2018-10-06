@@ -86,38 +86,38 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1> Drizzle is ready </h1>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1> dBlog</h1>
         </header>
-        <Router history={createBrowserHistory()}>
-          <Switch>
-            <Route exact path="/" render={(props) =>
-              <Home drizzle={this.props.drizzle} auth={this.props.auth} {...props} />} />
-            <Route exact path="/profile" render={(props) =>
-              <Profile auth={this.props.auth} {...props} />} />
-            <Route exact path="/callback" render={(props) => {
-              this.handleAuthentication(props);
-              return <Callback {...props} />
-            }}/>
-            <Route path="/myposts" render={(props) => (
-              !this.props.auth.isAuthenticated() ? (
-                <Redirect to="/"/>
-              ) : (
-                <Posts auth={this.props.auth} {...props} />
-              )
-            )} />
-            <Route path="/admin" render={(props) => (
-              !this.props.auth.isAuthenticated() || !this.props.auth.userHasScopes(['write:posts']) ? (
-                <Redirect to="/"/>
-              ) : (
-                <h1> Admin </h1>
-              )
-            )} />
-            <Route component={NoMatch} />
-          </Switch>
-        </Router>
+        <body>
+          <Router history={createBrowserHistory()}>
+            <Switch>
+              <Route exact path="/" render={(props) =>
+                <Home drizzle={this.props.drizzle} auth={this.props.auth} {...props} />} />
+              <Route exact path="/profile" render={(props) =>
+                <Profile auth={this.props.auth} {...props} />} />
+              <Route exact path="/callback" render={(props) => {
+                this.handleAuthentication(props);
+                return <Callback {...props} />
+              }}/>
+              <Route path="/myposts" render={(props) => (
+                !this.props.auth.isAuthenticated() ? (
+                  <Redirect to="/"/>
+                ) : (
+                  <Posts auth={this.props.auth} {...props} />
+                )
+              )} />
+              <Route path="/admin" render={(props) => (
+                !this.props.auth.isAuthenticated() || !this.props.auth.userHasScopes(['write:posts']) ? (
+                  <Redirect to="/"/>
+                ) : (
+                  <h1> Admin </h1>
+                )
+              )} />
+              <Route component={NoMatch} />
+            </Switch>
+          </Router>
+        </body>
       </div>
     );
   }
