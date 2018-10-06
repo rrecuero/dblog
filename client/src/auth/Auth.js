@@ -8,11 +8,12 @@ export default class Auth {
       clientID: 'EcDmjEPPOYAnBiY9o0jSEsukqdCfITdW',
       redirectUri: 'http://localhost:3000/callback',
       responseType: 'token id_token',
-      scope: 'openid'
+      scope: 'openid profile'
     });
     this.history = history;
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.getProfile = this.getProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
  }
@@ -37,6 +38,24 @@ export default class Auth {
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
     this.history.replace('/');
+  }
+
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No Access Token found');
+    }
+    return accessToken;
+  }
+
+  getProfile(cb) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(err, profile);
+    });
   }
 
   logout() {

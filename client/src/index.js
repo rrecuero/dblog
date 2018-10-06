@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Callback from './containers/Callback';
+import Profile from './containers/Profile';
 import registerServiceWorker from './utils/registerServiceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -46,11 +47,14 @@ const NoMatch = ({ location }) => (
 
 ReactDOM.render((
     <DrizzleContext.Provider drizzle={drizzle}>
-      <App drizzle={drizzle}>
+      <App drizzle={drizzle} auth={auth}>
         <LoadingContainer>
           <Router history={history} store={drizzleStore}>
             <Switch>
-              <Route exact path="/" component={App} auth={auth} />
+              <Route exact path="/" render={(props) =>
+                <App auth={auth} {...props} />} />
+              <Route exact path="/profile" render={(props) =>
+                <Profile auth={auth} {...props} />} />
               <Route component={NoMatch} />
               <Route path="/callback" render={(props) => {
                 handleAuthentication(props);

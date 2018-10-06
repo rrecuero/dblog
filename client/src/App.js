@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import ReadString from "./components/ReadString";
 import SetString from "./components/SetString";
 import Checkout from './components/Checkout';
-import Auth from './components/Auth.js';
 
 import './App.scss';
 
@@ -25,8 +24,6 @@ class App extends Component {
       }
     });
     this.ping();
-    const auth = new Auth();
-    auth.login();
   }
 
   login() {
@@ -65,6 +62,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('this.props.auth', this.props);
     const { isAuthenticated } = this.props.auth;
     if (this.state.loading) {
       return "Loading Drizzle...";
