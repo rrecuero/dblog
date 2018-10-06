@@ -47,7 +47,7 @@ app.use(
       jwksUri: `https://${config.get('auth0').domain}/.well-known/jwks.json`
     }),
     audience: 'https://dblog.dapis.io/api',
-    issuer: `https://${config.get('auth0').domain}`,
+    // issuer: `https://${config.get('auth0').domain}`,
     algorithms: ['RS256']
   }).unless((req) => {
     const unprivilegedPaths = [

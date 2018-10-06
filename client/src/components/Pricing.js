@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import Checkout from './Checkout';
 
 class Pricing extends Component {
-  render() {
-    const { getAccessToken } = this.props.auth;
+  state = { userId: this.props.auth && this.props.auth.userProfile };
+  componentDidMount() {
+    if (this.props.auth && !this.props.auth.userProfile) {
+      this.props.auth.getProfile((err, profile) => {
+        this.setState({ userId: profile.sub });
+      });
+    }
+  }
 
+  render() {
     return (
       <div class="pricing-03">
         <div class="pricing-03__container container container--large">
@@ -40,11 +47,12 @@ class Pricing extends Component {
                   </li>
                 </ul>
                 <div class="pricing-03__button">
-                  {this.props.isAuthenticated &&
+                  {this.props.auth && this.state.userId &&
                     <Checkout
-                      apiToken={getAccessToken()}
-                      name={'One Month Subscription'}
-                      description={'Get access to the'}
+                      apiToken={this.props.auth.getAccessToken()}
+                      userId= {this.state.userId}
+                      name={'dBlog Subscription'}
+                      description={'One Month'}
                       amount={9}
                    />
                   }

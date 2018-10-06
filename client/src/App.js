@@ -152,7 +152,7 @@ class App extends Component {
                 )
               )} />
               <Route path="/blog" render={(props) => (
-                !this.props.auth.isAuthenticated() || !this.props.auth.userHasScopes(['write:posts']) ? (
+                !this.props.auth.isAuthenticated() || !this.props.auth.hasPaid()? (
                   <Redirect to="/"/>
                 ) : (
                   <Blog auth={this.props.auth} {...props} />
