@@ -144,8 +144,8 @@ class App extends Component {
                 this.handleAuthentication(props);
                 return <Callback {...props} />
               }}/>
-              <Route path="/myposts" render={(props) => (
-                !this.props.subscription.isAuthenticated() ? (
+              <Route path="/subscription" render={(props) => (
+                !this.props.auth.isAuthenticated() ? (
                   <Redirect to="/"/>
                 ) : (
                   <Subscription auth={this.props.auth} {...props} />
