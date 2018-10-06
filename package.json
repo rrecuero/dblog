@@ -1,0 +1,32 @@
+{
+  "name": "dblog",
+  "version": "1.0.0",
+  "description": "Dblog",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "postinstall": "npm install --prefix backend && npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrecuero/dblog.git"
+  },
+  "keywords": [
+    "react",
+    "ethereum",
+    "truffle",
+    "drizzle",
+    "nodejs",
+    "openzeppelin"
+  ],
+  "author": "Ramon Recuero <ramon@dapis.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrecuero/dblog/issues"
+  },
+  "homepage": "https://github.com/rrecuero/dblog#readme"
+}
