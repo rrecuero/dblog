@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import ReadString from "./components/ReadString";
-import SetString from "./components/SetString";
-import Checkout from './components/Checkout';
-
+import Callback from './containers/Callback';
+import Profile from './containers/Profile';
+import Posts from './containers/Posts';
+import Home from './containers/Home';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import './App.scss';
+
+
+// TODO: Move out
+const NoMatch = ({ location }) => (
+  <div>
+    <h3>
+      No match for <code>{location.pathname}</code>
+    </h3>
+  </div>
+);
+
 
 class App extends Component {
   state = { loading: true, drizzleState: null };
@@ -24,6 +37,12 @@ class App extends Component {
       }
     });
     this.ping();
+  }
+
+  handleAuthentication = (nextState, replace) => {
+    if (/access_token|id_token|error/.test(nextState.location.hash)) {
+      this.props.auth.handleAuthentication();
+    }
   }
 
   login() {
@@ -62,7 +81,6 @@ class App extends Component {
   }
 
   render() {
-    const { isAuthenticated, userHasScopes } = this.props.auth;
     if (this.state.loading) {
       return "Loading Drizzle...";
     }
@@ -73,44 +91,33 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <div className="App-intro">
-          <Checkout
-             name={'The Road to learn React'}
-             description={'Only the Book'}
-             amount={1}
-           />
-          <ReadString
-            drizzle={this.props.drizzle}
-            drizzleState={this.state.drizzleState}
-          />
-          <SetString
-            drizzle={this.props.drizzle}
-            drizzleState={this.state.drizzleState}
-          />
-        </div>
-        {!isAuthenticated() && (
-          <button
-            className="btn-margin"
-            onClick={this.login.bind(this)}>
-            Log In
-          </button>
-        )}
-        {isAuthenticated() && (
-          <button
-            className="btn-margin"
-            onClick={this.logout.bind(this)}
-          >
-            Log Out
-          </button>
-        )}
-        {isAuthenticated() &&  userHasScopes(['write:posts']) && (
-          <button
-            className="btn-margin"
-            onClick={this.goTo.bind(this, 'admin')}
-          >
-            Admin
-          </button>
-        )}
+        <Router history={createBrowserHistory()}>
+          <Switch>
+            <Route exact path="/" render={(props) =>
+              <Home drizzle={this.props.drizzle} auth={this.props.auth} {...props} />} />
+            <Route exact path="/profile" render={(props) =>
+              <Profile auth={this.props.auth} {...props} />} />
+            <Route exact path="/callback" render={(props) => {
+              this.handleAuthentication(props);
+              return <Callback {...props} />
+            }}/>
+            <Route path="/myposts" render={(props) => (
+              !this.props.auth.isAuthenticated() ? (
+                <Redirect to="/"/>
+              ) : (
+                <Posts auth={this.props.auth} {...props} />
+              )
+            )} />
+            <Route path="/admin" render={(props) => (
+              !this.props.auth.isAuthenticated() || !this.props.auth.userHasScopes(['write:posts']) ? (
+                <Redirect to="/"/>
+              ) : (
+                <h1> Admin </h1>
+              )
+            )} />
+            <Route component={NoMatch} />
+          </Switch>
+        </Router>
       </div>
     );
   }
