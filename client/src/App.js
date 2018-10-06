@@ -7,7 +7,6 @@ import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import './App.scss';
 
-
 // TODO: Move out
 const NoMatch = ({ location }) => (
   <div>

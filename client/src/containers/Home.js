@@ -36,9 +36,6 @@ class Home extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return "Loading Drizzle...";
-    }
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="home">
