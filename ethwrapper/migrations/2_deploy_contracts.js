@@ -1,5 +1,7 @@
-const MyStringStore = artifacts.require("MyStringStore");
+const PostFactory = artifacts.require("PostFactory");
+const Post = artifacts.require("Post");
 
 module.exports = function(deployer) {
-  deployer.deploy(MyStringStore);
+  deployer.deploy(PostFactory);
+  deployer.deploy(Post);
 };
