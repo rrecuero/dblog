@@ -18,6 +18,7 @@ export default class Auth {
     this.getProfile = this.getProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.scheduleRenewal();
  }
 
   handleAuthentication() {
@@ -40,6 +41,8 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('scopes', JSON.stringify(scopes));
+    // schedule a token renewal
+    this.scheduleRenewal();
     // navigate to the home route
     this.history.replace('/');
   }
@@ -62,6 +65,27 @@ export default class Auth {
     });
   }
 
+  renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setSession(result);
+        }
+      }
+    );
+  }
+
+  scheduleRenewal() {
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const delay = expiresAt - Date.now();
+    if (delay > 0) {
+      this.tokenRenewalTimeout = setTimeout(() => {
+        this.renewToken();
+      }, delay);
+    }
+  }
+
   userHasScopes(scopes) {
     const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
@@ -74,6 +98,7 @@ export default class Auth {
     localStorage.removeItem('expires_at');
     // navigate to the home route
     this.history.replace('/');
+    clearTimeout(this.tokenRenewalTimeout);
   }
 
   isAuthenticated() {

@@ -16,6 +16,9 @@ export const config = {
     test: 'sk_live_MY_SECRET_KEY',
     live: 'sk_test_MY_SECRET_KEY'
   },
+  auth0: {
+    domain: 'dapis.auth0.com'
+  },
   // Mail
   Mandrill: {
     key: ''
