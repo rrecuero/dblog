@@ -75,7 +75,7 @@ class Home extends Component {
       <div class="features-02">
         <div class="container container--small">
           <div class="title-box title-box--center">
-            <h2 class="heading">Building a dApp people want</h2>
+            <h2 class="heading">Building a dApp People Want</h2>
             <p class="title-box__text">Try enameling the red wine steaks with bloody peanut sauce and salsa verde, steamed.</p>
           </div>
         </div>
@@ -105,13 +105,13 @@ class Home extends Component {
       <div class="video-01">
         <div class="container container--small">
           <div class="title-box title-box--center">
-            <h2 class="heading">Time is the Most Valuable Thing</h2>
-            <p class="title-box__text">Dexter, noster eposs etiam convertam de bi-color, velox secula.</p>
+            <h2 class="heading">Freedom of expression demands decentralization</h2>
+            <p class="title-box__text">It's an universal right that cannot be delegated to 3rd parties. Our friend from Aragon explain why.</p>
           </div>
         </div>
         <div class="container">
           <div class="video-01__item">
-            <iframe class="video-01__iframe" src="https://www.youtube.com/embed/Z0FETzb32Hs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+            <iframe class="video-01__iframe" src="https://www.youtube.com/embed/AqjIWmiAidw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
             <div class="spinner"></div>
           </div>
         </div>
@@ -122,93 +122,62 @@ class Home extends Component {
             <div class="subheading">Explore the benefits of dBlog Platform</div>
             <h2 class="heading heading--accent">Strong Base for Sustainable Growth<img class="emoji  " src="img/emoji/bicep.png" alt="Emoji"/>
             </h2>
-            <p>Quinoa can be enameled with sour oysters, also try jumbleing the kebab with condensed milk.</p>
+            <p>Post can be transferred to a different blog relayer, at any time.</p>
           </div>
         </div>
         <div class="container">
           <ul class="features-01__items">
             <li class="features-01__item">
               <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-1.svg"/><span class="feature__title_text">Authentic Design</span>
+                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-1.svg"/><span class="feature__title_text">Seamless</span>
                 </h3>
-                <p class="feature__content"><span>With chocolates drink oyster sauce. Pork shoulder can be flavored with grey nachos, also try whisking the cake with vinegar.</span></p><a class="feature__link" href="javascript:void(0);" target="_blank"><span>Explore demos</span><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></a>
+                <p class="feature__content">
+                  <span>
+                    No need to use Metamask or any other special browser.
+                  </span>
+                </p>
               </div>
             </li>
             <li class="features-01__item">
               <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-2.svg"/><span class="feature__title_text">All integrations</span>
+                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-2.svg"/><span class="feature__title_text">Pay in USD</span>
                 </h3>
-                <p class="feature__content"><span>Try mashing up the onion lassi tunas with warm beer and orange juice, sautéed. With turkey drink salad cream.</span></p><a class="feature__link" href="javascript:void(0);" target="_blank"><span>Learn more</span><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></a>
+                <p class="feature__content">
+                  <span>
+                    Simple and transparent pricing that you can understand. It's in $$$.
+                  </span>
+                </p>
               </div>
             </li>
             <li class="features-01__item">
               <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-3.svg"/><span class="feature__title_text">Simple Generator</span>
+                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-3.svg"/><span class="feature__title_text">Proof of Write</span>
                 </h3>
-                <p class="feature__content"><span>Why does the species experiment? Advice at the wormhole was the future of resistance, promised to a real spacecraft.</span></p><a class="feature__link" href="javascript:void(0);" target="_blank"><span>Try it</span><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></a>
+                <p class="feature__content">
+                  <span>
+                    Every post you write will be registered forever on the Ethereum blockchain.
+                  </span></p>
               </div>
             </li>
             <li class="features-01__item">
               <div class="feature">
                 <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-4.svg"/><span class="feature__title_text">Fully Responsive</span>
                 </h3>
-                <p class="feature__content"><span>With pickles drink onion lassi. Chicken breasts can be mashed up with yellow ramen, also try enameling the smoothie with tea.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-5.svg"/><span class="feature__title_text">Handmade Animations</span>
-                </h3>
-                <p class="feature__content"><span>Try chopping casserole rubed with sour milk, whisked with woodruff. Garnish a dozen tablespoons of nachos in eleven pounds of okra sauce.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-6.svg"/><span class="feature__title_text">Built to Inspire</span>
-                </h3>
-                <p class="feature__content"><span>Condensed milk soup is just not the same without onion powder and muddy yellow asparagus. With avocados drink plain vinegar.</span></p>
+                <p class="feature__content"><span>Your blog is going to be fully responsive in all different devices.</span></p>
               </div>
             </li>
             <li class="features-01__item">
               <div class="feature">
                 <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-7.svg"/><span class="feature__title_text">Start Instantly</span>
                 </h3>
-                <p class="feature__content"><span>When squeezing tangy apples, be sure they are room temperature. Flavor twenty and a half teaspoons of herring in one cup of milk.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-8.svg"/><span class="feature__title_text">Icons &amp; Illustrations</span>
-                </h3>
-                <p class="feature__content"><span>Honor, mystery, and definition. Beauty at the holodeck was the vision of tragedy, loved to a small machine.</span></p>
+                <p class="feature__content"><span>No need to buy cryptocurrencies or install any clunky extension.</span></p>
               </div>
             </li>
             <li class="features-01__item">
               <div class="feature">
                 <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-9.svg"/><span class="feature__title_text">Handy Templates</span>
                 </h3>
-                <p class="feature__content"><span>Pork shoulder paste has to have a smashed, yellow carrots component. Chicory combines greatly with heated ramen.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-10.svg"/><span class="feature__title_text">Countless Components</span>
-                </h3>
-                <p class="feature__content"><span>Who can gain the reincarnation and death of a self if he has the powerful control of the creator.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-11.svg"/><span class="feature__title_text">Made by Indie</span>
-                </h3>
-                <p class="feature__content"><span>Try rubbing the cocktail sauce tofus with warm ketchup and herring sauce, grilled. With chocolates drink orange juice.</span></p>
-              </div>
-            </li>
-            <li class="features-01__item">
-              <div class="feature">
-                <h3 class="feature__title"><img class="feature__icon" src="img/icons/abstract_icons/abstract-icon-12.svg"/><span class="feature__title_text">Inner Pages</span>
-                </h3>
-                <p class="feature__content"><span>To the chilled okra add steak, onion, pork butt juice and crushed quinoa. Rice combines greatly with sichuan-style oysters.</span></p>
+                <p class="feature__content"><span>Choose between different templates to suit your needs or transfer to another Blog Relayer.</span></p>
               </div>
             </li>
           </ul>
