@@ -8,7 +8,7 @@ contract Post is PostFactory, ERC721 {
 
   using SafeMath for uint256;
 
-  mapping (uint => address) blogApprovals;
+  mapping (uint => address) postApprovals;
 
   function balanceOf(address _owner) public view returns (uint256 _balance) {// return ownerPostCount[_owner];
   }
@@ -34,12 +34,12 @@ contract Post is PostFactory, ERC721 {
   }
 
   function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
-    blogApprovals[_tokenId] = _to;
+    postApprovals[_tokenId] = _to;
     Approval(msg.sender, _to, _tokenId);
   }
 
   function takeOwnership(uint256 _tokenId) public {
-    require(blogApprovals[_tokenId] == msg.sender);
+    require(postApprovals[_tokenId] == msg.sender);
     address owner = ownerOf(_tokenId);
     _transfer(owner, msg.sender, _tokenId);
   }

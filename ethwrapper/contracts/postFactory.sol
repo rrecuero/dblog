@@ -15,11 +15,13 @@ contract PostFactory is Ownable {
   }
 
   Post[] public posts;
+  // string[] public blogs;
 
   mapping (uint => address) public postToOwner;
   mapping (address => uint) ownerPostCount;
 
-  function createPost(string _ipfsHash, string hash) public {
+  // TODO: Only owner can create contract
+  function createPost(string _ipfsHash, string hash) public onlyOwner {
     uint id = posts.push(Post(_ipfsHash, hash)) - 1;
     postToOwner[id] = msg.sender;
     ownerPostCount[msg.sender]++;
