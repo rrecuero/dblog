@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Callback from './containers/Callback';
 import Profile from './containers/Profile';
-import Posts from './containers/Posts';
+import Blog from './containers/Blog';
 import Home from './containers/Home';
+import Subscription from './containers/Subscription';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import './App.scss';
@@ -144,17 +145,17 @@ class App extends Component {
                 return <Callback {...props} />
               }}/>
               <Route path="/myposts" render={(props) => (
-                !this.props.auth.isAuthenticated() ? (
+                !this.props.subscription.isAuthenticated() ? (
                   <Redirect to="/"/>
                 ) : (
-                  <Posts auth={this.props.auth} {...props} />
+                  <Subscription auth={this.props.auth} {...props} />
                 )
               )} />
-              <Route path="/admin" render={(props) => (
+              <Route path="/blog" render={(props) => (
                 !this.props.auth.isAuthenticated() || !this.props.auth.userHasScopes(['write:posts']) ? (
                   <Redirect to="/"/>
                 ) : (
-                  <h1> Admin </h1>
+                  <Blog auth={this.props.auth} {...props} />
                 )
               )} />
               <Route component={NoMatch} />

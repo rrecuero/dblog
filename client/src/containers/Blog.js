@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
+class Blog extends Component {
   securedPing() {
     const { getAccessToken } = this.props.auth;
     const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
@@ -18,10 +18,10 @@ class Post extends Component {
   render() {
     return (
       <div className="container">
-        Posts
+        Your Blog
       </div>
     );
   }
 }
 
-export default Post;
+export default Blog;

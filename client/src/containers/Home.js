@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import ReadString from "../components/ReadString";
-import SetString from "../components/SetString";
-import Checkout from '../components/Checkout';
-
 import './Home.scss';
 
 class Home extends Component {
@@ -23,11 +19,6 @@ class Home extends Component {
     });
   }
 
-//   <Checkout
-//    name={'The Road to learn React'}
-//    description={'Only the Book'}
-//    amount={1}
-//  />
 // <ReadString
 //   drizzle={this.props.drizzle}
 //   drizzleState={this.state.drizzleState}
@@ -57,7 +48,7 @@ class Home extends Component {
           <div className="container">
             <div class="header-44__wrapper">
               <div class="header-44__text_box">
-                <h2 class="heading heading--accent text-white">Your Censorhip Resistant Blog</h2>
+                <h2 class="heading heading--accent text-white">Create Your Own Censorship Resistant Blog in 5 Minutes</h2>
                 <p class="text-white">
                   Store your posts on the blockchain. Truly verifiable posts that belong to the writer.
                   Easy to use and low friction.
@@ -84,7 +75,7 @@ class Home extends Component {
       <div class="features-02">
         <div class="container container--small">
           <div class="title-box title-box--center">
-            <h2 class="heading">Created by Makers for Makers</h2>
+            <h2 class="heading">Building a dApp people want</h2>
             <p class="title-box__text">Try enameling the red wine steaks with bloody peanut sauce and salsa verde, steamed.</p>
           </div>
         </div>
@@ -92,20 +83,20 @@ class Home extends Component {
           <ul class="features-02__items">
             <li class="features-02__item">
               <div class="features-02__item_box">
-                <div class="features-02__number">40%<span class="features-02__word">bigger</span></div>
-                <p class="features-02__description">Lettuce can be blended with packaged ground beef, also try mash uping the mousse with cream.</p>
+                <div class="features-02__number"><span class="features-02__word">Hosted on</span> IPFS</div>
+                <p class="features-02__description">The interplanetary gives you censorship resistant, traceability and proof of write. </p>
               </div>
             </li>
             <li class="features-02__item">
               <div class="features-02__item_box">
-                <div class="features-02__number">20%<span class="features-02__word">cooler</span></div>
-                <p class="features-02__description">Leek can be mixed with grey rice, also try decorating the fritters with BBQ sauce.</p>
+                <div class="features-02__number"><span class="features-02__word">It's</span>Transferable</div>
+                <p class="features-02__description">No vendor lock-in. Your blog posts belong only to you.</p>
               </div>
             </li>
             <li class="features-02__item">
               <div class="features-02__item_box">
-                <div class="features-02__number">99.98%<span class="features-02__word">uptime</span></div>
-                <p class="features-02__description">Chicken lard can be decorated with hardened meatballs, also try seasoning the stir-fry with coconut milk.</p>
+                <div class="features-02__number"><span class="features-02__word">Every post is an </span> NFT</div>
+                <p class="features-02__description">Every post you write is recorded on the Ethereum blockchain. See it, transfer it or even sell it.</p>
               </div>
             </li>
           </ul>
@@ -229,8 +220,8 @@ class Home extends Component {
             <div class="pricing-03__info">
               <h1 class="heading">Simple and Fair Pricing</h1>
               <div class="pricing-03__info_text">
-                <p>Combine pork shoulder, pork butt and meatballs. season with tender woodruff and serve squeezed with peanuts. Enjoy! Try cooking rhubarb pudding varnished with fish sauce.</p>
-                <p>Strawberries can be enameled with mild blood oranges, also try seasoning the soup with coconut milk.</p>
+                <p>Create your own blog that leverages the power of the blockchain. Get the best of the blockchain with loosing on usability.</p>
+                <p>Your posts are always your own. Blockchain allows you to verify your posts and move them when necessary.</p>
               </div>
             </div>
             <div class="pricing-03__illustration js-toggle-animation" title="Release sunlight"><img class="pricing-03__main_img" src="img/emoji/cloud.png"/><img class="pricing-03__secondary_img" src="img/emoji/sun.png"/></div>
@@ -241,19 +232,25 @@ class Home extends Component {
               <div class="pricing-03__price_bottom">
                 <ul class="pricing-03__benefits_list">
                   <li class="pricing-03__benefit"><img class="pricing-03__benefit_icon" src="img/icons/checked--acid.svg"/>
-                    <div class="pricing-03__benefit_text">Create unlimited projects</div>
+                    <div class="pricing-03__benefit_text">Transferable blog</div>
                   </li>
                   <li class="pricing-03__benefit"><img class="pricing-03__benefit_icon" src="img/icons/checked--acid.svg"/>
-                    <div class="pricing-03__benefit_text">Use 80+ integrations</div>
+                    <div class="pricing-03__benefit_text">IPFS Hosting</div>
                   </li>
                   <li class="pricing-03__benefit"><img class="pricing-03__benefit_icon" src="img/icons/checked--acid.svg"/>
-                    <div class="pricing-03__benefit_text">Invite collaborators</div>
+                    <div class="pricing-03__benefit_text">Post - ERC-721 Collectible</div>
                   </li>
                   <li class="pricing-03__benefit"><img class="pricing-03__benefit_icon" src="img/icons/checked--acid.svg"/>
-                    <div class="pricing-03__benefit_text">Free backups</div>
+                    <div class="pricing-03__benefit_text">Custom Styles(Coming Soon)</div>
+                  </li>
+                  <li class="pricing-03__benefit"><img class="pricing-03__benefit_icon" src="img/icons/checked--acid.svg"/>
+                    <div class="pricing-03__benefit_text">Custom Domain(Coming Soon)</div>
                   </li>
                 </ul>
-                <div class="pricing-03__button"><a class="button   button--accent-bg " href="javascript:void(0);"><span>Start Now</span></a>
+                <div class="pricing-03__button">
+                  <button class="button   button--accent-bg " onClick={this.login.bind(this)}>
+                    <span>Start Now</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -265,8 +262,8 @@ class Home extends Component {
           <div class="text--01__box">
             <div class="text--01__emoji"><img class="emoji   emoji--large" src="img/emoji/raising_hands.png" alt="Emoji"/>
             </div>
-            <p class="text--01__content white-text">Why does dBlog Platform rock? Because it’s a landing page generator focused on a small target audience - startups and makers.</p>
-            <div class="text--01__link_box"><a class="pill-link  pill-link--black  pill-link--small " href="javascript:void(0);" target="_blank"><span class="pill-link__text">Learn more about the mission</span><span class="pill-link__icon"><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></span></a>
+            <p class="text--01__content white-text">Why does dBlog Platform rock? Because it’s the first platform that you can use to build transferable censorship resistant blogs.</p>
+            <div class="text--01__link_box"><a class="pill-link  pill-link--black  pill-link--small " href="https://avc.com/2018/09/cloudflares-ipfs-gateway/" target="_blank"><span class="pill-link__text">Learn more about why from Fred Wilson's blog</span><span class="pill-link__icon"><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></span></a>
             </div>
           </div>
         </div>
