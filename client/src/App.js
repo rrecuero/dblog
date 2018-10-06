@@ -97,7 +97,6 @@ class App extends Component {
         )}
         {isAuthenticated() && (
           <button
-            bsStyle="primary"
             className="btn-margin"
             onClick={this.logout.bind(this)}
           >
@@ -106,7 +105,6 @@ class App extends Component {
         )}
         {isAuthenticated() &&  userHasScopes(['write:posts']) && (
           <button
-            bsStyle="primary"
             className="btn-margin"
             onClick={this.goTo.bind(this, 'admin')}
           >
