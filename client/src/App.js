@@ -93,13 +93,14 @@ class App extends Component {
                 <div class="nav-01__logo"><a class="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
                 <div class="nav-01__links js-menu">
                   <ul class="nav-01__list">
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>About</span></a>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                      <span>About</span></a>
                     </li>
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Features</span></a>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                      <span>Features</span></a>
                     </li>
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Contact us</span></a>
-                    </li>
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Demo</span></a>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                      <span>Pricing</span></a>
                     </li>
                     <li class="nav-01__item">
                       {isAuthenticated() && (
@@ -162,14 +163,25 @@ class App extends Component {
           </Router>
           <div class="footer-01">
             <div class="container">
-              <div class="footer-01__wrapper"><a class="footer-01__logo_link" href="javascript:void(0);"><img class="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
+              <div class="footer-01__wrapper">
+                <a class="footer-01__logo_link" href="javascript:void(0);"><img class="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
                 <ul class="footer-01__list">
-                  <li class="footer-01__item"><a class="footer-01__link" href="javascript:void(0);" target="_blank">hi@unicornplatform.com</a></li>
+                  <li class="footer-01__item"><a class="footer-01__link" href="javascript:void(0);" target="_blank">
+                    ramon@dapis.io</a>
+                  </li>
                 </ul>
                 <ul class="footer-01__list">
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">Sing Up</a></li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">F.A.Q.</a></li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">About</a></li>
+                  <li class="footer-01__item">
+                    <a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                      Sign Up
+                    </a>
+                  </li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                    F.A.Q.</a>
+                  </li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                    About</a>
+                  </li>
                 </ul>
                 <ul class="footer-01__list">
                   <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://twitter.com/unicornplatform" target="_blank">Twitter</a></li>

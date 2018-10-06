@@ -46,8 +46,11 @@ class Home extends Component {
           <div className="container">
             <div class="header-44__wrapper">
               <div class="header-44__text_box">
-                <h2 class="heading heading--accent text-white">Welcome to the Future</h2>
-                <p class="text-white">Ferox, lotus dominas acceleratrix vitare de altus, nobilis species. Cum finis peregrinatione, omnes messores manifestum castus, altus planetaes.</p>
+                <h2 class="heading heading--accent text-white">Your Censorhip Resistant Blog</h2>
+                <p class="text-white">
+                  Store your posts on the blockchain. Truly verifiable posts that belong to the writer.
+                  Easy to use and low friction.
+                </p>
               </div>
               <div class="header-44__buttons_box">
                 <div class="buttons-set">
@@ -114,7 +117,7 @@ class Home extends Component {
       <div class="features-01">
         <div class="container container--small">
           <div class="features-01__title_box">
-            <div class="subheading">Explore the benefits of Unicorn Platform</div>
+            <div class="subheading">Explore the benefits of dBlog Platform</div>
             <h2 class="heading heading--accent">Strong Base for Sustainable Growth<img class="emoji  " src="img/emoji/bicep.png" alt="Emoji"/>
             </h2>
             <p>Quinoa can be enameled with sour oysters, also try jumbleing the kebab with condensed milk.</p>
@@ -251,7 +254,7 @@ class Home extends Component {
           <div class="text--01__box">
             <div class="text--01__emoji"><img class="emoji   emoji--large" src="img/emoji/raising_hands.png" alt="Emoji"/>
             </div>
-            <p class="text--01__content white-text">Why does Unicorn Platform rock? Because it’s a landing page generator focused on a small target audience - startups and makers.</p>
+            <p class="text--01__content white-text">Why does dBlog Platform rock? Because it’s a landing page generator focused on a small target audience - startups and makers.</p>
             <div class="text--01__link_box"><a class="pill-link  pill-link--black  pill-link--small " href="javascript:void(0);" target="_blank"><span class="pill-link__text">Learn more about the mission</span><span class="pill-link__icon"><span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="#00396B"/></svg></span></span></a>
             </div>
           </div>
