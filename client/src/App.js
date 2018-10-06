@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Callback from './containers/Callback';
 import Profile from './containers/Profile';
 import Posts from './containers/Posts';
@@ -81,13 +80,57 @@ class App extends Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth;
     if (this.state.loading) {
       return "Loading Drizzle...";
     }
     return (
       <div className="App">
-        <header className="App-header">
-          <h1> dBlog</h1>
+        <header className="header-44">
+          <nav class="nav-01">
+            <div className="container is-fluid">
+              <div class="nav-01__box">
+                <div class="nav-01__logo"><a class="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
+                <div class="nav-01__links js-menu">
+                  <ul class="nav-01__list">
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>About</span></a>
+                    </li>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Features</span></a>
+                    </li>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Contact us</span></a>
+                    </li>
+                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank"><span>Demo</span></a>
+                    </li>
+                    <li class="nav-01__item">
+                      {isAuthenticated() && (
+                        <button
+                          className="button button--white-outline "
+                          onClick={this.logout.bind(this)}
+                        >
+                          <span>Log Out</span>
+                        </button>
+                      )}
+                      {!isAuthenticated() && (
+                        <button
+                          className="button button--white-outline "
+                          onClick={this.logout.bind(this)}
+                        >
+                          <span>Sign Up</span>
+                        </button>
+                      )}
+                    </li>
+                  </ul>
+                  <div class="nav-01__burger">
+                    <button class="burger js-open-menu" type="button">
+                      <div class="burger__box">
+                        <div class="burger__inner"></div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
         </header>
         <body>
           <Router history={createBrowserHistory()}>
@@ -117,6 +160,25 @@ class App extends Component {
               <Route component={NoMatch} />
             </Switch>
           </Router>
+          <div class="footer-01">
+            <div class="container">
+              <div class="footer-01__wrapper"><a class="footer-01__logo_link" href="javascript:void(0);"><img class="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
+                <ul class="footer-01__list">
+                  <li class="footer-01__item"><a class="footer-01__link" href="javascript:void(0);" target="_blank">hi@unicornplatform.com</a></li>
+                </ul>
+                <ul class="footer-01__list">
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">Sing Up</a></li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">F.A.Q.</a></li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">About</a></li>
+                </ul>
+                <ul class="footer-01__list">
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://twitter.com/unicornplatform" target="_blank">Twitter</a></li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://fb.com/unicornplatform" target="_blank">Facebook</a></li>
+                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://www.instagram.com/unicornplatform/" target="_blank">Instagram</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </body>
       </div>
     );
