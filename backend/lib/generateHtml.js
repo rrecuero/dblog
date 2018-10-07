@@ -1,4 +1,4 @@
-const dateFormat = require('dateFormat');
+const dateFormat = require('dateformat');
 
 function writePost(post) {
   const date = dateFormat(post.createdAt, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
