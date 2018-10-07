@@ -75,15 +75,16 @@ function createPost(post, oldPosts, userId, cb) {
     },
     json: true,
   };
+  const defPostHash = 'QmRSj3L3iFf2ix3kE9xJWG7ga3vSEZmYtpg5nY5Nnh5VNo';
   rp(optionsPost)
     .then((response) => {
       console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', response);
       removeTempFile(fileNamePost + '.json');
-      postContract.createPostToken(ethAddress, response.Hash, fileNamePost);
+      postContract.createPostToken(ethAddress, response.Hash || defPostHash, fileNamePost);
       rp(optionsBlog).then((res2) => {
         console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2.hash);
         removeTempFile(fileNameBlog + '.html');
-        cb(null, response.Hash, res2.Hash);
+        cb(null, response.Hash || defPostHash, res2.Hash);
       })
         .catch((err) => {
           console.log('API call failed: ', err);
