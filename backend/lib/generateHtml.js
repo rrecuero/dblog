@@ -128,7 +128,7 @@ module.exports = (posts) => {
                 ${postText}
               <!-- END MAIN CONTENT AREA -->
               </table>
-              <a href="http://dblog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; margin-top: 20px; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
+              <a href="http://blog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; margin-top: 20px; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 20 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
                 Write a Post
               </a>
 
