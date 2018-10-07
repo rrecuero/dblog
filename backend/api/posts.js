@@ -57,8 +57,8 @@ function writePost(req, res) {
               ethAddress,
               title,
               text,
-              ipfsHash: '',
-              latestBlogHash: 'asda',
+              ipfsHash: postHash,
+              latestBlogHash: blogHash,
               transaction: '',
               tokenUri: ''
             },

@@ -96,11 +96,11 @@ function createPost(post, oldPosts, userId, cb) {
     });
 }
 
-createPost({ content: 'bla bla', title: 'title 1', createdAt: new Date() }, [
-  { content: 'bla bla 2', title: 'title 2', createdAt: new Date() },
-], 'userid', (err, postHash, blogHash) => {
-  console.log('err', err);
-  console.log('postHash', postHash);
-  console.log('blogHash', blogHash);
-});
+// createPost({ content: 'bla bla', title: 'title 1', createdAt: new Date() }, [
+//   { content: 'bla bla 2', title: 'title 2', createdAt: new Date() },
+// ], 'userid', (err, postHash, blogHash) => {
+//   console.log('err', err);
+//   console.log('postHash', postHash);
+//   console.log('blogHash', blogHash);
+// });
 module.exports = createPost;
