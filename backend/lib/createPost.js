@@ -3,6 +3,7 @@ const fs = require('fs');
 const md5 = require('md5');
 
 const postContract = require('./ethereum-lib');
+const generateHtml = require('./generateHtml');
 const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
 
 // Get user address it will be in the payload or call middleman
@@ -30,8 +31,9 @@ function getFromIPFS(ipfsHash) {
 
 async function createPost (data='Whaddup Ramon!') {
   const fileName = md5(data);
-  const wstream = fs.createWriteStream(`${__dirname}/${fileName}.json`);
-  wstream.write(JSON.stringify(data));
+  const content = generateHtml(data);
+  const wstream = fs.createWriteStream(`${__dirname}/${fileName}.html`);
+  wstream.write(content);
   wstream.end();
 
   console.log('\n Creating Post...')
@@ -41,7 +43,7 @@ async function createPost (data='Whaddup Ramon!') {
     uri: `${IPFS_URL}/add?pin=false`,
     formData: {
       file: {
-          value: fs.createReadStream(`${__dirname}/${fileName}.json`),
+          value: fs.createReadStream(`${__dirname}/${fileName}.html`),
           options: {
               contentType: 'application/json'
           }
@@ -65,10 +67,10 @@ async function createPost (data='Whaddup Ramon!') {
 }
 
 function removeTempFile(fileName) {
-  fs.unlink(`${__dirname}/${fileName}.json`, (err) => {
+  fs.unlink(`${__dirname}/${fileName}.html`, (err) => {
     if (err) throw err;
   });
 }
 
-// createPost();
+createPost('test');
 module.exports = createPost;
