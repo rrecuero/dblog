@@ -3,7 +3,7 @@ import { createBrowserHistory } from 'history';
 import StripeCheckout from 'react-stripe-checkout';
 
 const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'production'
-  ? 'pk_live_MY_PUBLISHABLE_KEY'
+  ? 'pk_test_P4hKXiuXPkqeeGW2ByhhLXZu'
   : 'pk_test_P4hKXiuXPkqeeGW2ByhhLXZu';
 
 const PAYMENT_SERVER_URL = '/api/checkout';

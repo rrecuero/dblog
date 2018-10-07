@@ -11,10 +11,10 @@ export const config = {
     url: "mongodb://...",
     reconnectAttempts: 3
   },
-  //Stripe
+  // Stripe
   Stripe: {
     test: 'sk_test_akl3XNXtFLBlCQkX0CV5P6P1',
-    live: 'sk_test_MY_SECRET_KEY'
+    live: 'sk_test_akl3XNXtFLBlCQkX0CV5P6P1'
   },
   auth0: {
     domain: 'dapis.auth0.com'

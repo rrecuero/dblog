@@ -1,5 +1,9 @@
 import auth0 from 'auth0-js';
 
+const REDIRECT_URI = process.env.NODE_ENV === 'production'
+  ? 'https://dblog.dapis.io:3000/callback'
+  : 'http://localhost:3000/callback';
+
 export default class Auth {
 
   requestedScopes = 'openid profile read:messages write:messages';
@@ -8,7 +12,7 @@ export default class Auth {
       domain: 'dapis.auth0.com',
       clientID: 'EcDmjEPPOYAnBiY9o0jSEsukqdCfITdW',
       audience: 'https://dblog.dapis.io/api',
-      redirectUri: 'http://localhost:3000/callback',
+      redirectUri: REDIRECT_URI,
       responseType: 'token id_token',
       scope: this.requestedScopes
     });
