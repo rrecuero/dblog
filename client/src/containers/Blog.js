@@ -154,7 +154,9 @@ class Blog extends React.PureComponent {
             </div>
           )}
           {posts.length > 0 && (
-            <a href={`https://cloudflare-ipfs.com/ipfs/${latestBlogHash}`}>
+            <a href={`https://cloudflare-ipfs.com/ipfs/${latestBlogHash}`}
+              rel="noopener noreferrer"
+              target="_blank">
               <button className="button button--alt-accent-bg">
                 View your Blog
               </button>

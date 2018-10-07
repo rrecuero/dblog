@@ -31,7 +31,7 @@ function writePost(req, res) {
       // Handle error
       return res.status(500).send({ error: err });
     }
-    createPost({ content: text, title, createdAt }, posts, userId, (errPost, postHash, blogHash) => {
+    createPost({ content: text, title, createdAt }, posts, userId, ethAddress, (errPost, postHash, blogHash) => {
       if (errPost) {
         return res.status(500).send({ error: errPost });
       }
@@ -39,17 +39,19 @@ function writePost(req, res) {
         userId,
         ethAddress,
         postHash,
+        createdAt: new Date(),
         text,
         title
       }, (err2) => {
         if (err2) {
           // Handle error
-          res.status(500).send({ error: err2 });
+          return res.status(500).send({ error: err2 });
         }
+        console.log('postHash', postHash);
         management.updateUserMetadata({ id: userId }, { ethAddress, latestBlogHash: blogHash }, (err3) => {
           if (err3) {
             // Handle error
-            res.status(500).send({ error: err3 });
+            return res.status(500).send({ error: err3 });
           }
           // Updated user.
           res.status(200).send({
