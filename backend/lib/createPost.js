@@ -3,6 +3,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const postContract = require('./ethereum-lib');
 const generateHtml = require('./generateHtml');
+
 const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
 
 // Get user address it will be in the payload or call middleman
@@ -20,7 +21,7 @@ function getFromIPFS(ipfsHash) {
   const options = {
     uri: `${IPFS_URL}?arg=${ipfsHash}&archive=true`,
     headers: {
-        'User-Agent': 'Request-Promise'
+      'User-Agent': 'Request-Promise'
     },
     resolveWithFullResponse: true,
   };
@@ -74,16 +75,13 @@ function createPost(post, oldPosts, userId, cb) {
     },
     json: true,
   };
-
   return rp(optionsPost)
     .then((res) => {
-      console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', res);
-      console.log(`\n https://cloudflare-ipfs.com/ipfs/${res.Hash}`);
+      console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', res.hash);
       removeTempFile(fileNamePost + '.json');
       postContract.createPostToken(res.Hash, fileNamePost);
       rp(optionsBlog).then((res2) => {
-        console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2);
-        console.log(`\n https://cloudflare-ipfs.com/ipfs/${res2.Hash}`);
+        console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2.hash);
         removeTempFile(fileNameBlog + '.html');
         cb(null, res.Hash, res2.Hash);
       })
