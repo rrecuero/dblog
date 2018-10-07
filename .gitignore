@@ -61,4 +61,4 @@ ethwrapper/build
 .next
 
 # Ignore environment variables
-.env
+backend/.env
