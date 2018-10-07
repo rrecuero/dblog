@@ -1,7 +1,6 @@
 const rp = require('request-promise');
 const fs = require('fs');
 const md5 = require('md5');
-
 const postContract = require('./ethereum-lib');
 const generateHtml = require('./generateHtml');
 const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
@@ -12,7 +11,7 @@ const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
 // [X] - 2. Transfer the post owner to the eth address
 
 function removeTempFile(fileName) {
-  fs.unlink(`${__dirname}/${fileName}.html`, (err) => {
+  fs.unlink(`${__dirname}/${fileName}`, (err) => {
     if (err) throw err;
   });
 }
@@ -80,12 +79,12 @@ function createPost(post, oldPosts, userId, cb) {
     .then((res) => {
       console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', res);
       console.log(`\n https://cloudflare-ipfs.com/ipfs/${res.Hash}`);
-      removeTempFile(fileNamePost);
+      removeTempFile(fileNamePost + '.json');
       postContract.createPostToken(res.Hash, fileNamePost);
       rp(optionsBlog).then((res2) => {
         console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2);
         console.log(`\n https://cloudflare-ipfs.com/ipfs/${res2.Hash}`);
-        removeTempFile(fileNameBlog);
+        removeTempFile(fileNameBlog + '.html');
         cb(null, res.Hash, res2.Hash);
       })
         .catch((err) => {
@@ -97,5 +96,11 @@ function createPost(post, oldPosts, userId, cb) {
     });
 }
 
-createPost('test');
+createPost({ content: 'bla bla', title: 'title 1', createdAt: new Date() }, [
+  { content: 'bla bla 2', title: 'title 2', createdAt: new Date() },
+], 'userid', (err, postHash, blogHash) => {
+  console.log('err', err);
+  console.log('postHash', postHash);
+  console.log('blogHash', blogHash);
+});
 module.exports = createPost;

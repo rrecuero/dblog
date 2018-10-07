@@ -1,19 +1,23 @@
+const dateFormat = require('dateFormat');
 
 function writePost(post) {
+  const date = dateFormat(post.createdAt, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
   return `
-    <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
-      <h1>${post.title}</h1>
-      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
-        <tr>
-          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-              ${post.content}
-            </p>
-          </td>
-        </tr>
-      </table>
-      <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Posted on ${post.createdAt}</p>
-    </td>
+    <tr>
+      <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+        <h1>${post.title}</h1>
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+          <tr>
+            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                ${post.content}
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Posted on ${date}</p>
+      </td>
+    </tr>
   `;
 }
 
@@ -120,14 +124,12 @@ module.exports = (posts) => {
               <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
 
                 <!-- START MAIN CONTENT AREA -->
-                <tr>
-                  ${postText}
-                </tr>
-                <a href="http://dblog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
-                  Write a Post
-                </a>
+                ${postText}
               <!-- END MAIN CONTENT AREA -->
               </table>
+              <a href="http://dblog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
+                Write a Post
+              </a>
 
               <!-- START FOOTER -->
               <div class="footer" style="clear: both; Margin-top: 10px; text-align: center; width: 100%;">

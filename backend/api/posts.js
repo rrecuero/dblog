@@ -1,7 +1,6 @@
 import { config } from 'config';
 // import request from 'superagent';
 import { ManagementClient } from 'auth0';
-import dateFormat from 'dateFormat';
 import UserManager from '../users/userManager';
 
 const createPost = require('../lib/createPost');
@@ -26,7 +25,7 @@ function writePost(req, res) {
   // 2. Transfer the post owner to the eth address
   // Updates last used eth address
 
-  const createdAt = dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+  const createdAt = new Date();
   userManager.getUserPosts(userId, (err, posts) => {
     if (err) {
       // Handle error
