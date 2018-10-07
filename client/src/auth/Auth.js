@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js';
 
 const REDIRECT_URI = process.env.NODE_ENV === 'production'
-  ? window.location.origin
+  ? window.location.origin + '/callback'
   : 'http://localhost:3000/callback';
 
 export default class Auth {
