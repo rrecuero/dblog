@@ -53,7 +53,7 @@ class App extends Component {
           <nav className="nav-01">
             <div className="container is-fluid">
               <div className="nav-01__box">
-                <div className="nav-01__logo"><a className="nav-01__link" href="/" target="_blank" /> dBlog </div>
+                <div className="nav-01__logo"><a className="nav-01__link" href="/" target="_blank" > dBlog </a> </div>
                 <div className="nav-01__links js-menu">
                   <ul className="nav-01__list">
                     {isAuthenticated() &&
