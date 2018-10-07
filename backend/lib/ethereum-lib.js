@@ -24,7 +24,7 @@ class PostContract {
   }
 
   createPostToken(toAddress, ipfsUri='QmRSj3L3iFf2ix3kE9xJWG7ga3vSEZmYtpg5nY5Nnh5VNo', hash='bofasdfadsfdy', cb) {
-    this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '20000000'}, (error, transactionHash) => {
+    this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '100000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
         return;
@@ -40,7 +40,7 @@ class PostContract {
   }
 
   _transferOwnership(to='0x60801c0625939a1368c2b753EEBbE50435AC56E6', tokenId) {
-    this.Post.methods.transfer(to, tokenId).send({ from: this.defaultAccount, gas: '100000000000'}).then(receipt => {
+    this.Post.methods.transfer(to, tokenId).send({ from: this.defaultAccount, gas: '100000'}).then(receipt => {
       console.log(`\n 🎊  Transferred ownership from ${this.defaultAccount} to ${to} 🎉 \n`)
       console.log(receipt.events.Transfer.returnValues);
     });
