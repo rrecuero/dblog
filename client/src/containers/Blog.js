@@ -1,6 +1,7 @@
 import React from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+import Loading from './Loading.js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './Blog.scss';
 
@@ -42,7 +43,6 @@ class Blog extends React.PureComponent {
             })
             .then(json)
             .then((response) => {
-              console.log('response', response.result);
               this.setState({
                 posts: response.result,
                 postsLoaded: true
@@ -119,9 +119,11 @@ class Blog extends React.PureComponent {
   }
 
   render() {
-    const { editorState, postLoading, latestBlogHash,
+    const { editorState, postLoading, latestBlogHash, postsLoaded,
       walletLoading, title, posts, success, message, ethAddress } = this.state;
-
+    if (!postsLoaded) {
+      return <Loading />;
+    }
     return (
       <div className="container">
         <div className="header-blog">

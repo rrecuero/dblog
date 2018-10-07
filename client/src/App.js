@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Callback from './containers/Callback';
+import Loading from './containers/Loading';
 import Profile from './containers/Profile';
 import Blog from './containers/Blog';
 import Home from './containers/Home';
@@ -81,9 +81,6 @@ class App extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-    if (this.state.loading) {
-      return "Loading Drizzle...";
-    }
     return (
       <div className="App">
         <header className="header-44">
@@ -134,33 +131,38 @@ class App extends Component {
           </nav>
         </header>
         <section>
-          <Router history={createBrowserHistory()}>
-            <Switch>
-              <Route exact path="/" render={(props) =>
-                <Home drizzle={this.props.drizzle} auth={this.props.auth} {...props} />} />
-              <Route exact path="/profile" render={(props) =>
-                <Profile auth={this.props.auth} {...props} />} />
-              <Route exact path="/callback" render={(props) => {
-                this.handleAuthentication(props);
-                return <Callback {...props} />
-              }}/>
-              <Route path="/subscription" render={(props) => (
-                !this.props.auth.isAuthenticated() ? (
-                  <Redirect to="/"/>
-                ) : (
-                  <Subscription auth={this.props.auth} {...props} />
-                )
-              )} />
-              <Route path="/blog" render={(props) => (
-                !this.props.auth.isAuthenticated() || !this.props.auth.hasPaid()? (
-                  <Redirect to="/"/>
-                ) : (
-                  <Blog drizzle={this.props.drizzle} auth={this.props.auth} {...props} />
-                )
-              )} />
-              <Route component={NoMatch} />
-            </Switch>
-          </Router>
+          {this.state.loading &&
+            <Loading />
+          }
+          {!this.state.loading &&
+            <Router history={createBrowserHistory()}>
+              <Switch>
+                <Route exact path="/" render={(props) =>
+                  <Home drizzle={this.props.drizzle} auth={this.props.auth} {...props} />} />
+                <Route exact path="/profile" render={(props) =>
+                  <Profile auth={this.props.auth} {...props} />} />
+                <Route exact path="/callback" render={(props) => {
+                  this.handleAuthentication(props);
+                  return <Loading {...props} />
+                }}/>
+                <Route path="/subscription" render={(props) => (
+                  !this.props.auth.isAuthenticated() ? (
+                    <Redirect to="/"/>
+                  ) : (
+                    <Subscription auth={this.props.auth} {...props} />
+                  )
+                )} />
+                <Route path="/blog" render={(props) => (
+                  !this.props.auth.isAuthenticated() || !this.props.auth.hasPaid()? (
+                    <Redirect to="/"/>
+                  ) : (
+                    <Blog drizzle={this.props.drizzle} auth={this.props.auth} {...props} />
+                  )
+                )} />
+                <Route component={NoMatch} />
+              </Switch>
+            </Router>
+          }
           <div className="footer-01">
             <div className="container">
               <div className="footer-01__wrapper">
