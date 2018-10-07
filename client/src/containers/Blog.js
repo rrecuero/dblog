@@ -17,7 +17,7 @@ class Blog extends React.PureComponent {
       userProfile: this.props.auth && this.props.auth.userProfile,
       ethAddress: null,
       title: null,
-      latestBlogHash: null,
+      latestBlogHash: this.props.auth && this.props.auth.userProfile && this.props.auth.userProfile.latestBlogHash,
       walletLoading: false,
       message: null,
       postsLoaded: false,
@@ -55,12 +55,13 @@ class Blog extends React.PureComponent {
   componentDidMount() {
     if (this.props.auth && !this.props.auth.userProfile) {
       this.props.auth.getProfile((err, profile) => {
-        this.setState({ userProfile: profile });
+        this.setState({ userProfile: profile, latestBlogHash: profile.user_metadata.latestBlogHash });
         this.loadPosts();
       });
     }
     if (this.props.auth && this.props.auth.userProfile) {
       this.loadPosts();
+      this.setState({ latestBlogHash: this.props.auth.userProfile && this.props.auth.userProfile.user_metadata.latestBlogHash });
     }
   }
 
@@ -163,7 +164,7 @@ class Blog extends React.PureComponent {
             </a>
           )}
           {posts.map((post, index) => (
-            <div className={'post'}>
+            <div className={'post'} key={post.transaction}>
               <div className={'title'}>
                 {post.title}
               </div>

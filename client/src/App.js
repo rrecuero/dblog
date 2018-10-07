@@ -5,6 +5,9 @@ class App extends Component {
 
   componentDidMount() {
     this.ping();
+    if (this.props.auth.isAuthenticated) {
+      this.props.auth.getProfile();
+    }
   }
 
   login() {

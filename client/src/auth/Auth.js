@@ -4,6 +4,10 @@ const REDIRECT_URI = process.env.NODE_ENV === 'production'
   ? window.location.origin + '/callback'
   : 'http://localhost:3000/callback';
 
+function json(response) {
+  return response.json()
+}
+
 export default class Auth {
 
   requestedScopes = 'openid profile read:messages write:messages';
@@ -70,9 +74,25 @@ export default class Auth {
       if (profile) {
         this.userProfile = profile;
       }
-      if (cb) {
-        cb(err, profile);
-      }
+      fetch('/api/user?userId=' + profile.sub,
+        {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            'Authorization': `Bearer ${accessToken}`
+          },
+        })
+        .then(json)
+        .then((response) => {
+          this.userProfile.user_metadata = response.result.user_metadata;
+          if (cb) {
+            cb(null, this.userProfile);
+          }
+        })
+        .catch((error) => {
+          cb(error);
+        });
     });
   }
 
@@ -121,7 +141,7 @@ export default class Auth {
   }
 
   hasPaid() {
-    return JSON.parse(localStorage.getItem('paid'));
+    return JSON.parse(localStorage.getItem('paid')) || this.userProfile.user_metadata.paid;
   }
 
   login() {
