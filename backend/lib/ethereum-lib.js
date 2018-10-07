@@ -9,8 +9,12 @@ web3.eth.accounts.privateKeyToAccount(pk);
 
 class PostContract {
   constructor() {
-    this.defaultAccount = `0x30d3d0c5472dea9cf3bb907f5028c17b96180d4c`;
-    this.PostContractAddress = `0xa22337f97351b1e19f686638a1ebca5c59cdd52a`;
+    // Faraaz Accounts
+    // this.defaultAccount = `0x72466A75a372CF1D1175590F2Ea8e8503EE5be00`;
+    // this.PostContractAddress = `0xa79a89033a258a47f771d58554d9456fd1f44318`;
+
+    this.defaultAccount = `0x72466A75a372CF1D1175590F2Ea8e8503EE5be00`;
+    this.PostContractAddress = `0xa79a89033a258a47f771d58554d9456fd1f44318`;
 
     this.Post = new web3.eth.Contract(postInterface, this.PostContractAddress, {
       from: this.defaultAccount, // default from address
