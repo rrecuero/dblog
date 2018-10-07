@@ -10,7 +10,7 @@ import { Drizzle, generateStore } from 'drizzle';
 import { DrizzleContext } from 'drizzle-react';
 // import contract artifacts
 
-import MyStringStore from './contracts/MyStringStore.json';
+// import MyStringStore from './contracts/MyStringStore.json';
 
 // import css
 import 'font-awesome/css/font-awesome.min.css';
@@ -18,7 +18,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './index.scss';
 
 // let drizzle know what contracts we want
-const options = { contracts: [MyStringStore] };
+const options = { contracts: [] };
 // setup the drizzle store and drizzle
 const drizzleStore = generateStore(options);
 const drizzle = new Drizzle(options, drizzleStore);
