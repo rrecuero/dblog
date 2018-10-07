@@ -111,7 +111,7 @@ class App extends Component {
                       {!isAuthenticated() && (
                         <button
                           className="button button--white-outline "
-                          onClick={this.logout.bind(this)}
+                          onClick={this.login.bind(this)}
                         >
                           <span>Sign Up</span>
                         </button>
