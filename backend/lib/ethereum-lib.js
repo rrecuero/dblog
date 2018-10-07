@@ -22,7 +22,7 @@ class PostContract {
     });
   }
 
-  createPostToken(toAddress, ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
+  createPostToken(toAddress, ipfsUri='QmRSj3L3iFf2ix3kE9xJWG7ga3vSEZmYtpg5nY5Nnh5VNo', hash='bofasdfadsfdy') {
     this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '2000000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
