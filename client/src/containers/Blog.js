@@ -171,7 +171,7 @@ class Blog extends React.PureComponent {
                 <a href={`https://cloudflare-ipfs.com/ipfs/${post.ipfsHash}`}>
                   View on IPFS
                 </a>
-                <a href={`https://etherscan.io/tx/${post.transaction}`}>
+                <a href={`https://kovan.etherscan.io/tx/${post.transaction}`}>
                   View tx on Etherscan
                 </a>
               </div>

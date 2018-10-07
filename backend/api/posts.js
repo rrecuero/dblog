@@ -26,7 +26,7 @@ function writePost(req, res) {
       // Handle error
       return res.status(500).send({ error: err });
     }
-    createPost({ content: text, title, createdAt }, posts, userId, ethAddress, (errPost, postHash, blogHash) => {
+    createPost({ content: text, title, createdAt }, posts, userId, ethAddress, (errPost, postHash, blogHash, txHash) => {
       if (errPost) {
         return res.status(500).send({ error: errPost });
       }
@@ -34,6 +34,8 @@ function writePost(req, res) {
         userId,
         ethAddress,
         postHash,
+        ipfsHash: postHash,
+        transaction: txHash,
         createdAt: new Date(),
         text,
         title
@@ -56,8 +58,7 @@ function writePost(req, res) {
               text,
               ipfsHash: postHash,
               latestBlogHash: blogHash,
-              transaction: '',
-              tokenUri: ''
+              transaction: txHash
             },
           });
         });

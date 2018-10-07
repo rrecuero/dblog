@@ -1,10 +1,11 @@
 require('dotenv').config()
+const HDWalletProvider = require("truffle-hdwallet-provider");
 
 const Web3 = require('web3');
 const pk = process.env.private_key;
 const postInterface = require('../../ethwrapper/build/contracts/Post.json').abi;
 
-const web3 = new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/fb6b85d94a9c4923b24e1bb11472c253'));
+const web3 = new Web3(new HDWalletProvider(process.env.mnemonic, 'https://ropsten.infura.io/v3/fb6b85d94a9c4923b24e1bb11472c253'));
 web3.eth.accounts.privateKeyToAccount(pk);
 
 class PostContract {
@@ -22,16 +23,18 @@ class PostContract {
     });
   }
 
-  createPostToken(toAddress, ipfsUri='QmRSj3L3iFf2ix3kE9xJWG7ga3vSEZmYtpg5nY5Nnh5VNo', hash='bofasdfadsfdy') {
+  createPostToken(toAddress, ipfsUri='QmRSj3L3iFf2ix3kE9xJWG7ga3vSEZmYtpg5nY5Nnh5VNo', hash='bofasdfadsfdy', cb) {
     this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '2000000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
         return;
       }
 
-    }).then((receipt) => {
-      console.log('\n 🎉  Created New PostToken 🎉');
-      console.log(`Created Token `, receipt.events.NewPost.returnValues);
+    }).on('transactionHash', (txHash) => {
+      console.log('\n 🎉  Sent transactions 🎉');
+      console.log(`Created Token `, txHash);
+      cb(null, txHash);
+    }).on('receipt', (receipt) => {
       this._transferOwnership(toAddress, receipt.events.NewPost.returnValues.tokenId);
     });
   }

@@ -80,15 +80,18 @@ function createPost(post, oldPosts, userId, ethAddress, cb) {
     .then((response) => {
       console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', response);
       removeTempFile(fileNamePost + '.json');
-      postContract.createPostToken(ethAddress, response.Hash || defPostHash, fileNamePost);
-      rp(optionsBlog).then((res2) => {
-        console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2.hash);
-        removeTempFile(fileNameBlog + '.html');
-        cb(null, response.Hash || defPostHash, res2.Hash);
-      })
-        .catch((err) => {
-          console.log('API call failed: ', err);
+      postContract.createPostToken(ethAddress, response.Hash || defPostHash, fileNamePost,
+        (err, txHash) => {
+          rp(optionsBlog).then((res2) => {
+            console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2.hash);
+            removeTempFile(fileNameBlog + '.html');
+            cb(null, response.Hash || defPostHash, res2.Hash, txHash);
+          })
+            .catch((err) => {
+              console.log('API call failed: ', err);
+            });
         });
+
     })
     .catch((err) => {
       console.log('API call failed: ', err);

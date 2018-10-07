@@ -2,6 +2,11 @@ import { config } from 'config';
 // import request from 'superagent';
 import { ManagementClient } from 'auth0';
 
+
+const HDWalletProvider = require("truffle-hdwallet-provider");
+const Web3 = require('web3');
+const web3 = new Web3(new HDWalletProvider(process.env.mnemonic, 'https://ropsten.infura.io/v3/fb6b85d94a9c4923b24e1bb11472c253'));
+
 const management = new ManagementClient({
   domain: config.get('auth0').domain,
   clientId: '0Ch84OXZjIw5WrnXTiEF5FmV6jVTj6Fw',
@@ -17,7 +22,7 @@ function createWallet(req, res) {
       // Handle error
       res.status(500).send({ error: err });
     }
-    res.status(200).send({ result: ethAddress });
+    res.status(200).send({ result: web3.eth.accounts.create(Math.random()).address });
   });
 }
 
