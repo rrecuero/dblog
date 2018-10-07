@@ -27,32 +27,40 @@ class Blog extends React.PureComponent {
       this.setState({ editorState });
     };
   }
+
+  loadPosts() {
+    if (!this.state.postsLoaded) {
+      fetch('/api/posts?userId=' + this.props.auth.userProfile.sub,
+        {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            'Authorization': `Bearer ${this.props.auth.getAccessToken()}`
+          },
+        })
+        .then(json)
+        .then((response) => {
+          this.setState({
+            posts: response.result,
+            postsLoaded: true
+          });
+        })
+        .catch((error) => {
+          this.setState({ message: 'Could not fetch posts: ' + error.message,  postLoading: false });
+        });
+    }
+  }
+
   componentDidMount() {
     if (this.props.auth && !this.props.auth.userProfile) {
       this.props.auth.getProfile((err, profile) => {
         this.setState({ userProfile: profile });
-        if (!this.state.postsLoaded) {
-          fetch('/api/posts?userId=' + this.props.auth.userProfile.sub,
-            {
-              method: 'GET',
-              mode: 'cors',
-              headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                'Authorization': `Bearer ${this.props.auth.getAccessToken()}`
-              },
-            })
-            .then(json)
-            .then((response) => {
-              this.setState({
-                posts: response.result,
-                postsLoaded: true
-              });
-            })
-            .catch((error) => {
-              this.setState({ message: 'Could not fetch posts: ' + error.message,  postLoading: false });
-            });
-        }
+        this.loadPosts();
       });
+    }
+    if (this.props.auth && this.props.auth.userProfile) {
+      this.loadPosts();
     }
   }
 

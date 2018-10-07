@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Checkout from './Checkout';
 
 class Pricing extends Component {
-  // state = { userId: this.props.auth && this.props.auth.userProfile };
-  // componentDidMount() {
-  //   if (this.props.auth && !this.props.auth.userProfile) {
-  //     this.props.auth.getProfile((err, profile) => {
-  //       this.setState({ userId: profile.sub });
-  //     });
-  //   }
-  // }
+  state = { userId: this.props.auth && this.props.auth.userProfile };
+  componentDidMount() {
+    if (this.props.auth && !this.props.auth.userProfile) {
+      this.props.auth.getProfile((err, profile) => {
+        this.setState({ userId: profile.sub });
+      });
+    }
+  }
 
   render() {
     return (
