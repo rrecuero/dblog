@@ -11,6 +11,12 @@ const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
 // [X] - 1. Create Post by calling PostFactory
 // [X] - 2. Transfer the post owner to the eth address
 
+function removeTempFile(fileName) {
+  fs.unlink(`${__dirname}/${fileName}.html`, (err) => {
+    if (err) throw err;
+  });
+}
+
 function getFromIPFS(ipfsHash) {
   const options = {
     uri: `${IPFS_URL}?arg=${ipfsHash}&archive=true`,
@@ -29,47 +35,66 @@ function getFromIPFS(ipfsHash) {
     });
 }
 
-async function createPost (data='Whaddup Ramon!') {
-  const fileName = md5(data);
-  const content = generateHtml(data);
-  const wstream = fs.createWriteStream(`${__dirname}/${fileName}.html`);
-  wstream.write(content);
-  wstream.end();
+function createPost(post, oldPosts, userId, cb) {
+  const fileNamePost = md5(post.content + post.title);
+  const fileNameBlog = 'blog' + userId;
+  const contentPost = JSON.stringify(post);
+  const contentBlog = generateHtml([...oldPosts, post]);
 
-  console.log('\n Creating Post...')
+  const wstreamp = fs.createWriteStream(`${__dirname}/${fileNamePost}.json`);
+  wstreamp.write(contentPost);
+  wstreamp.end();
+  const wstreamb = fs.createWriteStream(`${__dirname}/${fileNameBlog}.html`);
+  wstreamb.write(contentBlog);
+  wstreamb.end();
 
-  const options = {
+  const optionsPost = {
     method: 'POST',
     uri: `${IPFS_URL}/add?pin=false`,
     formData: {
       file: {
-          value: fs.createReadStream(`${__dirname}/${fileName}.html`),
-          options: {
-              contentType: 'application/json'
-          }
+        value: fs.createReadStream(`${__dirname}/${fileNamePost}.json`),
+        options: {
+          contentType: 'application/json'
+        }
       }
     },
     json: true,
   };
 
-  return rp(options)
-    .then(res => {
-      console.log('\n 🎉  Sucessfully saved to IPFS 🎉\n\n', res);
+  const optionsBlog = {
+    method: 'POST',
+    uri: `${IPFS_URL}/add?pin=false`,
+    formData: {
+      file: {
+        value: fs.createReadStream(`${__dirname}/${fileNameBlog}.html`),
+        options: {
+          contentType: 'application/json'
+        }
+      }
+    },
+    json: true,
+  };
+
+  return rp(optionsPost)
+    .then((res) => {
+      console.log('\n 🎉  Sucessfully saved post to IPFS 🎉\n\n', res);
       console.log(`\n https://cloudflare-ipfs.com/ipfs/${res.Hash}`);
-      removeTempFile(fileName);
-
-      postContract.createPostToken(res.Hash, fileName);
-
+      removeTempFile(fileNamePost);
+      postContract.createPostToken(res.Hash, fileNamePost);
+      rp(optionsBlog).then((res2) => {
+        console.log('\n 🎉  Sucessfully saved blog to IPFS 🎉\n\n', res2);
+        console.log(`\n https://cloudflare-ipfs.com/ipfs/${res2.Hash}`);
+        removeTempFile(fileNameBlog);
+        cb(null, res.Hash, res2.Hash);
+      })
+        .catch((err) => {
+          console.log('API call failed: ', err);
+        });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('API call failed: ', err);
     });
-}
-
-function removeTempFile(fileName) {
-  fs.unlink(`${__dirname}/${fileName}.html`, (err) => {
-    if (err) throw err;
-  });
 }
 
 createPost('test');

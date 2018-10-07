@@ -1,10 +1,10 @@
 import { config } from 'config';
 // import request from 'superagent';
 import { ManagementClient } from 'auth0';
+import dateFormat from 'dateFormat';
 import UserManager from '../users/userManager';
 
-// const deployPost = require('../lib/createPost');
-const generateHtml = require('../lib/createPost');
+const createPost = require('../lib/createPost');
 
 const management = new ManagementClient({
   domain: config.get('auth0').domain,
@@ -26,34 +26,45 @@ function writePost(req, res) {
   // 2. Transfer the post owner to the eth address
   // Updates last used eth address
 
-  // deployPost(generateHtml(title, text))
-
-  userManager.insertPost({
-    userId,
-    ethAddress,
-    text,
-    title
-  }, (err2) => {
-    if (err2) {
+  const createdAt = dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+  userManager.getUserPosts(userId, (err, posts) => {
+    if (err) {
       // Handle error
-      res.status(500).send({ error: err2 });
+      return res.status(500).send({ error: err });
     }
-    management.updateUserMetadata({ id: userId }, { ethAddress, latestBlogHash: '' }, (err) => {
-      if (err) {
-        // Handle error
-        res.status(500).send({ error: err });
+    createPost({ content: text, title, createdAt }, posts, userId, (errPost, postHash, blogHash) => {
+      if (errPost) {
+        return res.status(500).send({ error: errPost });
       }
-      // Updated user.
-      res.status(200).send({
-        result: {
-          ethAddress,
-          title,
-          text,
-          ipfsHash: '',
-          latestBlogHash: 'asda',
-          transaction: '',
-          tokenUri: ''
-        },
+      userManager.insertPost({
+        userId,
+        ethAddress,
+        postHash,
+        text,
+        title
+      }, (err2) => {
+        if (err2) {
+          // Handle error
+          res.status(500).send({ error: err2 });
+        }
+        management.updateUserMetadata({ id: userId }, { ethAddress, latestBlogHash: blogHash }, (err3) => {
+          if (err3) {
+            // Handle error
+            res.status(500).send({ error: err3 });
+          }
+          // Updated user.
+          res.status(200).send({
+            result: {
+              ethAddress,
+              title,
+              text,
+              ipfsHash: '',
+              latestBlogHash: 'asda',
+              transaction: '',
+              tokenUri: ''
+            },
+          });
+        });
       });
     });
   });
@@ -61,7 +72,6 @@ function writePost(req, res) {
 
 function getPosts(req, res) {
   const { userId } = req.query;
-  console.log('userId', userId);
   userManager.getUserPosts(userId, (err, posts) => {
     if (err) {
       // Handle error
