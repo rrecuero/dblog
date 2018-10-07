@@ -5,6 +5,7 @@
   "dependencies": {
     "auth0-js": "^9.8.0",
     "bulma": "^0.7.1",
+    "draft-js": "^0.10.5",
     "drizzle": "^1.2.3",
     "drizzle-react": "^1.2.0",
     "drizzle-react-components": "^1.2.0",
@@ -12,6 +13,7 @@
     "node-sass": "^4.9.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-draft-wysiwyg": "^1.12.13",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.3",

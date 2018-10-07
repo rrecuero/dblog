@@ -25,10 +25,15 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.history.replace('/');
+        this.getProfile((err, profile) => {
+          if (profile && profile.paid) {
+            this.history.replace('/blog');
+          } else {
+            this.history.replace('/subscription');
+          }
+        });
       } else if (err) {
         this.history.replace('/');
-        console.log(err);
       }
     });
   }
@@ -61,7 +66,9 @@ export default class Auth {
       if (profile) {
         this.userProfile = profile;
       }
-      cb(err, profile);
+      if (cb) {
+        cb(err, profile);
+      }
     });
   }
 
@@ -96,6 +103,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('paid');
     // navigate to the home route
     this.history.replace('/');
     clearTimeout(this.tokenRenewalTimeout);
@@ -106,6 +114,10 @@ export default class Auth {
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+
+  hasPaid() {
+    return JSON.parse(localStorage.getItem('expires_at'));
   }
 
   login() {

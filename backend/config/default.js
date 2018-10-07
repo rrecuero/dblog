@@ -13,7 +13,7 @@ export const config = {
   },
   //Stripe
   Stripe: {
-    test: 'sk_live_MY_SECRET_KEY',
+    test: 'sk_test_akl3XNXtFLBlCQkX0CV5P6P1',
     live: 'sk_test_MY_SECRET_KEY'
   },
   auth0: {

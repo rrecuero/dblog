@@ -4,8 +4,10 @@ class Callback extends Component {
   render() {
 
     return (
-      <div>
-        Loading...
+      <div class="container">
+        <h1>
+          Creating your account...
+        </h1>
       </div>
     );
   }
