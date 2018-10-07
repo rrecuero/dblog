@@ -110,7 +110,7 @@ class App extends Component {
           <div className="footer-01">
             <div className="container">
               <div className="footer-01__wrapper">
-                <a className="footer-01__logo_link" href="javascript:void(0);"><img className="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
+                <a className="footer-01__logo_link" href="/">dBlog</a>
                 <ul className="footer-01__list">
                   <li className="footer-01__item"><a className="footer-01__link" href="javascript:void(0);" target="_blank">
                     ramon@dapis.io</a>
