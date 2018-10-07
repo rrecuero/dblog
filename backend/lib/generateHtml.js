@@ -142,7 +142,7 @@ module.exports = (posts) => {
                   </tr>
                   <tr>
                     <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                      Powered by <a href="http://dblog.dapis.io" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">dapis.io</a>.
+                      Powered by <a href="https://dapis-dblog.herokuapp.com/" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">dapis.io</a>.
                     </td>
                   </tr>
                 </table>
