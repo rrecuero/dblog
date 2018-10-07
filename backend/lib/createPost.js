@@ -35,7 +35,7 @@ function getFromIPFS(ipfsHash) {
     });
 }
 
-function createPost(post, oldPosts, userId, cb) {
+function createPost(post, oldPosts, userId, ethAddress, cb) {
   const fileNamePost = md5(post.content + post.title);
   const fileNameBlog = 'blog' + userId;
   const contentPost = JSON.stringify(post);
