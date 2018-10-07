@@ -14,7 +14,7 @@ class PostContract {
     // this.PostContractAddress = `0xa79a89033a258a47f771d58554d9456fd1f44318`;
 
     this.defaultAccount = `0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e`;
-    this.PostContractAddress = `0xd219be8fc4ad8139dbeba9c8be356b214089c53e`;
+    this.PostContractAddress = `0x5055abf277fc21e97e1482c997a8032cf263d178`;
 
     this.Post = new web3.eth.Contract(postInterface, this.PostContractAddress, {
       from: this.defaultAccount, // default from address

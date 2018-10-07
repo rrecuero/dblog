@@ -31,5 +31,13 @@ const mnemonic = process.env.mnemonic;
          gas: 4465030,
          gasPrice: 10000000000,
        },
+     kovan: {
+         provider: function() {
+           return new HDWalletProvider(mnemonic, 'https://kovan.infura.io/v3/fb6b85d94a9c4923b24e1bb11472c253')
+         },
+         network_id: '42',
+         gas: 4465030,
+         gasPrice: 10000000000,
+       },
    }
  };
