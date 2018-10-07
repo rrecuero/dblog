@@ -61,4 +61,5 @@ ethwrapper/build
 
 # Ignore environment variables
 backend/.env
+ethwrapper/.env
 .DS_Store
