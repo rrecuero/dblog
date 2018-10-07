@@ -20,15 +20,6 @@ class Home extends Component {
     });
   }
 
-// <ReadString
-//   drizzle={this.props.drizzle}
-//   drizzleState={this.state.drizzleState}
-// />
-// <SetString
-//   drizzle={this.props.drizzle}
-//   drizzleState={this.state.drizzleState}
-// />
-
   compomentWillUnmount() {
     this.unsubscribe();
   }
@@ -73,14 +64,16 @@ class Home extends Component {
             </div>
           </div>
       </div>
-      <div class="features-02">
+      <div class="features-02" id="#about">
         <div class="container container--small">
           <div class="title-box title-box--center">
             <h2 class="heading">Building a dApp People Want</h2>
-            <p class="title-box__text">Try enameling the red wine steaks with bloody peanut sauce and salsa verde, steamed.</p>
+            <p class="title-box__text">
+              Users only care about blockchain if it means cheaper, faster or new capabiities.
+            </p>
           </div>
         </div>
-        <div class="container">
+        <div class="container" id="#features">
           <ul class="features-02__items">
             <li class="features-02__item">
               <div class="features-02__item_box">
@@ -184,7 +177,7 @@ class Home extends Component {
           </ul>
         </div>
       </div>
-      <Pricing isAuthenticated={isAuthenticated} login={this.login.bind(this)} />
+      <Pricing id="#pricing" isAuthenticated={isAuthenticated} login={this.login.bind(this)} />
       <div class="text--01">
         <div class="container container--small">
           <div class="text--01__box">

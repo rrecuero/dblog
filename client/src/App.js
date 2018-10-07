@@ -90,13 +90,13 @@ class App extends Component {
                 <div className="nav-01__logo"><a className="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
                 <div className="nav-01__links js-menu">
                   <ul className="nav-01__list">
-                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="#about" target="_blank">
                       <span>About</span></a>
                     </li>
-                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="#features" target="_blank">
                       <span>Features</span></a>
                     </li>
-                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="#pricing" target="_blank">
                       <span>Pricing</span></a>
                     </li>
                     <li className="nav-01__item">
