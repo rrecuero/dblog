@@ -5,11 +5,10 @@ const md5 = require('md5');
 const postContract = require('./ethereum-lib');
 const IPFS_URL = 'https://ipfs.infura.io:5001/api/v0';
 
-
-  // Get user address it will be in the payload or call middleman
-  // [X] - 0. Write file to IPFS (maybe change the owner to the address)
-  // [X] - 1. Create Post by calling PostFactory
-  // [X] - 2. Transfer the post owner to the eth address
+// Get user address it will be in the payload or call middleman
+// [X] - 0. Write file to IPFS (maybe change the owner to the address)
+// [X] - 1. Create Post by calling PostFactory
+// [X] - 2. Transfer the post owner to the eth address
 
 function getFromIPFS(ipfsHash) {
   const options = {
@@ -35,6 +34,8 @@ async function createPost (data='Whaddup Ramon!') {
   wstream.write(JSON.stringify(data));
   wstream.end();
 
+  console.log('\n Creating Post...')
+
   const options = {
     method: 'POST',
     uri: `${IPFS_URL}/add?pin=false`,
@@ -49,7 +50,7 @@ async function createPost (data='Whaddup Ramon!') {
     json: true,
   };
 
-  rp(options)
+  return rp(options)
     .then(res => {
       console.log('\n 🎉  Sucessfully saved to IPFS 🎉\n\n', res);
       console.log(`\n https://cloudflare-ipfs.com/ipfs/${res.Hash}`);
@@ -69,5 +70,5 @@ function removeTempFile(fileName) {
   });
 }
 
-createPost();
+// createPost();
 module.exports = createPost;

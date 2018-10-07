@@ -3,6 +3,9 @@ import { config } from 'config';
 import { ManagementClient } from 'auth0';
 import UserManager from '../users/userManager';
 
+// const deployPost = require('../lib/createPost');
+const generateHtml = require('../lib/createPost');
+
 const management = new ManagementClient({
   domain: config.get('auth0').domain,
   clientId: '0Ch84OXZjIw5WrnXTiEF5FmV6jVTj6Fw',
@@ -22,6 +25,8 @@ function writePost(req, res) {
   // 1. Create Post by calling PostFactory
   // 2. Transfer the post owner to the eth address
   // Updates last used eth address
+
+  // deployPost(generateHtml(title, text))
 
   userManager.insertPost({
     userId,
