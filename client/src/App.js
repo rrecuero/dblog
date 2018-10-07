@@ -5,7 +5,7 @@ class App extends Component {
 
   componentDidMount() {
     this.ping();
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.auth.isAuthenticated()) {
       this.props.auth.getProfile();
     }
   }
@@ -53,7 +53,7 @@ class App extends Component {
           <nav className="nav-01">
             <div className="container is-fluid">
               <div className="nav-01__box">
-                <div className="nav-01__logo"><a className="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
+                <div className="nav-01__logo"><a className="nav-01__link" href="/" target="_blank" /> dBlog </div>
                 <div className="nav-01__links js-menu">
                   <ul className="nav-01__list">
                     {isAuthenticated() &&
