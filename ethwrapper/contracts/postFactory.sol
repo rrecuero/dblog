@@ -7,7 +7,7 @@ contract PostFactory is Ownable {
 
   using SafeMath for uint256;
 
-  event NewPost(string ipfsHash);
+  event NewPost(uint tokenId, string ipfsHash, string hash);
 
   struct Post {
     string ipfsUrl;
@@ -25,7 +25,7 @@ contract PostFactory is Ownable {
     uint id = posts.push(Post(_ipfsHash, hash)) - 1;
     postToOwner[id] = msg.sender;
     ownerPostCount[msg.sender]++;
-    NewPost(_ipfsHash);
+    NewPost(id, _ipfsHash, hash);
   }
 
 }
