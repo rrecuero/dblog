@@ -27,6 +27,7 @@ class PostContract {
 
     }).then((receipt) => {
       console.log('\n 🎉  Created New PostToken 🎉');
+      console.log(`Created Token `, receipt.events.NewPost.returnValues);
       this._transferOwnership(undefined, receipt.events.NewPost.returnValues.tokenId);
     });
   }
