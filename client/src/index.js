@@ -14,7 +14,7 @@ import MyStringStore from './contracts/MyStringStore.json';
 
 // import css
 import 'font-awesome/css/font-awesome.min.css';
-// import 'bulma/bulma.sass';
+// import 'bulma/css/bulma.css';
 import './index.scss';
 
 // let drizzle know what contracts we want

@@ -79,14 +79,80 @@
 .settings {
   width: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
+
+  > div, > button, > input {
+    margin: 10px 0;
+    margin-right: 20px;
+  }
 }
 
 .address-input {
   border: 1px solid #ccc;
   padding: 5px;
   width: 400px;
-  margin: 0 20px;
+}
+
+.error-message, .success-message {
+  background: #fefefe;
+  border: 1px solid red;
+  margin: 20px 0;
+  font-size: 14px;
+  padding: 20px;
+
+  i {
+    color: red;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+}
+
+.success-message {
+  border-color: green;
+  i {
+    color: green;
+  }
+}
+
+.title-section {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  label {
+    margin-right: 10px;
+  }
+}
+
+.rdw-editor-main {
+  border: 1px solid #eee;
+  margin: 10px 0;
+  min-height: 100px;
+}
+
+.post {
+  box-shadow: 1px 3px 1px 1px #ccc;
+  padding: 30px 0;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  margin: 30px 0;
+  padding: 10px;
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .links {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px 0;
+
+    a {
+      margin-right: 10px;
+    }
+  }
 }

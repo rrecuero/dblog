@@ -104,6 +104,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('paid');
+    console.log('eo');
     // navigate to the home route
     this.history.replace('/');
     clearTimeout(this.tokenRenewalTimeout);

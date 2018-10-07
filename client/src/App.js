@@ -18,7 +18,7 @@ const NoMatch = ({ location }) => (
 );
 
 
-class App extends React.PureComponent {
+class App extends Component {
   state = { loading: true, drizzleState: null };
 
   componentDidMount() {
@@ -87,22 +87,22 @@ class App extends React.PureComponent {
     return (
       <div className="App">
         <header className="header-44">
-          <nav class="nav-01">
+          <nav className="nav-01">
             <div className="container is-fluid">
-              <div class="nav-01__box">
-                <div class="nav-01__logo"><a class="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
-                <div class="nav-01__links js-menu">
-                  <ul class="nav-01__list">
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+              <div className="nav-01__box">
+                <div className="nav-01__logo"><a className="nav-01__link" href="javascript:void(0);" target="_blank" /> </div>
+                <div className="nav-01__links js-menu">
+                  <ul className="nav-01__list">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
                       <span>About</span></a>
                     </li>
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
                       <span>Features</span></a>
                     </li>
-                    <li class="nav-01__item"><a class="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
+                    <li className="nav-01__item"><a className="button   button--white-outline  button--empty " href="javascript:void(0);" target="_blank">
                       <span>Pricing</span></a>
                     </li>
-                    <li class="nav-01__item">
+                    <li className="nav-01__item">
                       {isAuthenticated() && (
                         <button
                           className="button button--white-outline "
@@ -121,10 +121,10 @@ class App extends React.PureComponent {
                       )}
                     </li>
                   </ul>
-                  <div class="nav-01__burger">
-                    <button class="burger js-open-menu" type="button">
-                      <div class="burger__box">
-                        <div class="burger__inner"></div>
+                  <div className="nav-01__burger">
+                    <button className="burger js-open-menu" type="button">
+                      <div className="burger__box">
+                        <div className="burger__inner"></div>
                       </div>
                     </button>
                   </div>
@@ -133,7 +133,7 @@ class App extends React.PureComponent {
             </div>
           </nav>
         </header>
-        <body>
+        <section>
           <Router history={createBrowserHistory()}>
             <Switch>
               <Route exact path="/" render={(props) =>
@@ -161,37 +161,37 @@ class App extends React.PureComponent {
               <Route component={NoMatch} />
             </Switch>
           </Router>
-          <div class="footer-01">
-            <div class="container">
-              <div class="footer-01__wrapper">
-                <a class="footer-01__logo_link" href="javascript:void(0);"><img class="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
-                <ul class="footer-01__list">
-                  <li class="footer-01__item"><a class="footer-01__link" href="javascript:void(0);" target="_blank">
+          <div className="footer-01">
+            <div className="container">
+              <div className="footer-01__wrapper">
+                <a className="footer-01__logo_link" href="javascript:void(0);"><img className="footer-01__logo" src="img/other/unicorn-logo-text--black.png"/></a>
+                <ul className="footer-01__list">
+                  <li className="footer-01__item"><a className="footer-01__link" href="javascript:void(0);" target="_blank">
                     ramon@dapis.io</a>
                   </li>
                 </ul>
-                <ul class="footer-01__list">
-                  <li class="footer-01__item">
-                    <a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                <ul className="footer-01__list">
+                  <li className="footer-01__item">
+                    <a className="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
                       Sign Up
                     </a>
                   </li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                  <li className="footer-01__item"><a className="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
                     F.A.Q.</a>
                   </li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
+                  <li className="footer-01__item"><a className="footer-01__link footer-01__link--black" href="javascript:void(0);" target="_blank">
                     About</a>
                   </li>
                 </ul>
-                <ul class="footer-01__list">
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://twitter.com/unicornplatform" target="_blank">Twitter</a></li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://fb.com/unicornplatform" target="_blank">Facebook</a></li>
-                  <li class="footer-01__item"><a class="footer-01__link footer-01__link--black" href="https://www.instagram.com/unicornplatform/" target="_blank">Instagram</a></li>
+                <ul className="footer-01__list">
+                  <li className="footer-01__item"><a className="footer-01__link footer-01__link--black" href="https://twitter.com/unicornplatform" target="_blank">Twitter</a></li>
+                  <li className="footer-01__item"><a className="footer-01__link footer-01__link--black" href="https://fb.com/unicornplatform" target="_blank">Facebook</a></li>
+                  <li className="footer-01__item"><a className="footer-01__link footer-01__link--black" href="https://www.instagram.com/unicornplatform/" target="_blank">Instagram</a></li>
                 </ul>
               </div>
             </div>
           </div>
-        </body>
+        </section>
       </div>
     );
   }
