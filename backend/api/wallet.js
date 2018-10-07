@@ -22,7 +22,7 @@ function createWallet(req, res) {
       // Handle error
       res.status(500).send({ error: err });
     }
-    res.status(200).send({ result: web3.eth.accounts.create(Math.random()).address });
+    res.status(200).send({ result: web3.eth.accounts.create(Math.random().toString()).address });
   });
 }
 
