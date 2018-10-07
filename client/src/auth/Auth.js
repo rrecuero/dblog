@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js';
 
 const REDIRECT_URI = process.env.NODE_ENV === 'production'
-  ? 'https://dblog.dapis.io/callback'
+  ? 'https://dapis-dblog.herokuapp.com/'
   : 'http://localhost:3000/callback';
 
 export default class Auth {
