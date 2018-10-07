@@ -18,7 +18,7 @@ class PostContract {
     }); 
   }
 
-  async _createPostToken(ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
+  async createPostToken(ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
     this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '2000000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
@@ -39,7 +39,6 @@ class PostContract {
   }
 
 }
-// postContract._createPostToken();
 
 const postContract = new PostContract();
-export default postContract;
+module.exports = postContract;
