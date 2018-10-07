@@ -4,13 +4,13 @@ function writePost(post) {
   const date = dateFormat(post.createdAt, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
   return `
     <tr>
-      <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+      <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px; background: white; margin: 30px 0">
         <h1>${post.title}</h1>
         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
-          <tr>
+          <tr style="border-spacing: 5em;border-collapse:separate">
             <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                ${post.content}
+                ${post.content || post.text}
               </p>
             </td>
           </tr>
@@ -113,6 +113,7 @@ module.exports = (posts) => {
       </style>
     </head>
     <body class="" style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+      <center><h1> Your Decentralized Blog </h1></center>
       <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;">
         <tr>
           <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
@@ -121,13 +122,13 @@ module.exports = (posts) => {
 
               <!-- START CENTERED WHITE CONTAINER -->
               <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
-              <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
+              <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-radius: 3px;">
 
                 <!-- START MAIN CONTENT AREA -->
                 ${postText}
               <!-- END MAIN CONTENT AREA -->
               </table>
-              <a href="http://dblog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
+              <a href="http://dblog.dapis.io" target="_blank" style="display: inline-block; color: #ffffff; margin-top: 20px; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
                 Write a Post
               </a>
 

@@ -22,7 +22,7 @@ class PostContract {
     });
   }
 
-  createPostToken(ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
+  createPostToken(toAddress, ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
     this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '2000000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
@@ -32,7 +32,7 @@ class PostContract {
     }).then((receipt) => {
       console.log('\n 🎉  Created New PostToken 🎉');
       console.log(`Created Token `, receipt.events.NewPost.returnValues);
-      this._transferOwnership(undefined, receipt.events.NewPost.returnValues.tokenId);
+      this._transferOwnership(toAddress, receipt.events.NewPost.returnValues.tokenId);
     });
   }
 
