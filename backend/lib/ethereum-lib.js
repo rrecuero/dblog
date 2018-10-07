@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const pk = process.env.private_key;
 const postInterface = require('../../ethwrapper/build/contracts/Post.json').abi;
 
-const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/fb6b85d94a9c4923b24e1bb11472c253'));
 web3.eth.accounts.privateKeyToAccount(pk);
 
 class PostContract {
