@@ -31,13 +31,13 @@ export default class Auth {
         this.setSession(authResult);
         this.getProfile((err, profile) => {
           if (profile && profile.paid) {
-            this.history.replace('/blog');
+            window.location.href = '/blog';
           } else {
-            this.history.replace('/subscription');
+            window.location.href = '/subscription';
           }
         });
       } else if (err) {
-        this.history.replace('/');
+        window.location.href = '/';
       }
     });
   }
@@ -53,7 +53,7 @@ export default class Auth {
     // schedule a token renewal
     this.scheduleRenewal();
     // navigate to the home route
-    this.history.replace('/');
+    // window.location.href = '/';
   }
 
   getAccessToken() {
@@ -109,7 +109,7 @@ export default class Auth {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('paid');
     // navigate to the home route
-    this.history.replace('/');
+    window.location.href = '/';
     clearTimeout(this.tokenRenewalTimeout);
   }
 

@@ -6,7 +6,8 @@ class Subscription extends Component {
   render() {
     return (
       <div className="container">
-        <Pricing auth={this.props.auth} isAuthenticated />
+        <Pricing auth={this.props.auth}
+          isAuthenticated />
       </div>
     );
   }

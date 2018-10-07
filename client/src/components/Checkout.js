@@ -1,5 +1,4 @@
 import React from 'react'
-import { createBrowserHistory } from 'history';
 import StripeCheckout from 'react-stripe-checkout';
 
 const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'production'
@@ -12,7 +11,7 @@ const CURRENCY = 'USD';
 
 const successPayment = (response) => {
   localStorage.setItem('paid', true);
-  createBrowserHistory().replace('/blog');
+  window.location.href = '/blog';
 };
 
 const onToken = (amount, description, apiToken, userId) => token =>

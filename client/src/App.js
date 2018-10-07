@@ -1,33 +1,10 @@
 import React, { Component } from 'react';
-import Loading from './containers/Loading';
-import Profile from './containers/Profile';
-import Blog from './containers/Blog';
-import Home from './containers/Home';
-import Subscription from './containers/Subscription';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import './App.scss';
-
-// TODO: Move out
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>
-      No match for <code>{location.pathname}</code>
-    </h3>
-  </div>
-);
-
 
 class App extends Component {
 
   componentDidMount() {
     this.ping();
-  }
-
-  handleAuthentication = (nextState, replace) => {
-    if (/access_token|id_token|error/.test(nextState.location.hash)) {
-      this.props.auth.handleAuthentication();
-    }
   }
 
   login() {
@@ -125,34 +102,8 @@ class App extends Component {
             </div>
           </nav>
         </header>
+        {this.props.children}
         <section>
-          <Router history={createBrowserHistory()}>
-            <Switch>
-              <Route exact path="/" render={(props) =>
-                <Home auth={this.props.auth} {...props} />} />
-              <Route exact path="/profile" render={(props) =>
-                <Profile auth={this.props.auth} {...props} />} />
-              <Route exact path="/callback" render={(props) => {
-                this.handleAuthentication(props);
-                return <Loading {...props} />
-              }}/>
-              <Route path="/subscription" render={(props) => (
-                !this.props.auth.isAuthenticated() ? (
-                  <Redirect to="/"/>
-                ) : (
-                  <Subscription auth={this.props.auth} {...props} />
-                )
-              )} />
-              <Route path="/blog" render={(props) => (
-                !this.props.auth.isAuthenticated() || !this.props.auth.hasPaid()? (
-                  <Redirect to="/"/>
-                ) : (
-                  <Blog auth={this.props.auth} {...props} />
-                )
-              )} />
-              <Route component={NoMatch} />
-            </Switch>
-          </Router>
           <div className="footer-01">
             <div className="container">
               <div className="footer-01__wrapper">

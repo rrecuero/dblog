@@ -13,6 +13,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log('this.props', this.props);
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="home">
