@@ -18,7 +18,7 @@ class PostContract {
     });
   }
 
-  async createPostToken(ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
+  createPostToken(ipfsUri='Fyuccck', hash='bofasdfadsfdy') {
     this.Post.methods.createPost(ipfsUri, hash).send({from: this.defaultAccount, gas: '2000000'}, (error, transactionHash) => {
       if (error) {
         console.log('\n\nThere was an error calling createPost', error)
@@ -32,7 +32,7 @@ class PostContract {
     });
   }
 
-  async _transferOwnership(to='0x60801c0625939a1368c2b753EEBbE50435AC56E6', tokenId) {
+  _transferOwnership(to='0x60801c0625939a1368c2b753EEBbE50435AC56E6', tokenId) {
     this.Post.methods.transfer(to, tokenId).send({ from: this.defaultAccount, gas: '2000000'}).then(receipt => {
       console.log(`\n 🎊  Transferred ownership from ${this.defaultAccount} to ${to} 🎉 \n`)
       console.log(receipt.events.Transfer.returnValues);
