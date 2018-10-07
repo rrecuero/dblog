@@ -64,7 +64,7 @@ class Home extends Component {
             </div>
           </div>
       </div>
-      <div class="features-02" id="#about">
+      <div class="features-02" id="about">
         <div class="container container--small">
           <div class="title-box title-box--center">
             <h2 class="heading">Building a dApp People Want</h2>
@@ -73,7 +73,7 @@ class Home extends Component {
             </p>
           </div>
         </div>
-        <div class="container" id="#features">
+        <div class="container">
           <ul class="features-02__items">
             <li class="features-02__item">
               <div class="features-02__item_box">
@@ -110,7 +110,7 @@ class Home extends Component {
           </div>
         </div>
       </div>
-      <div class="features-01">
+      <div class="features-01" id="features">
         <div class="container container--small">
           <div class="features-01__title_box">
             <div class="subheading">Explore the benefits of dBlog Platform</div>
@@ -177,7 +177,7 @@ class Home extends Component {
           </ul>
         </div>
       </div>
-      <Pricing id="#pricing" isAuthenticated={isAuthenticated} login={this.login.bind(this)} />
+      <Pricing isAuthenticated={isAuthenticated} login={this.login.bind(this)} />
       <div class="text--01">
         <div class="container container--small">
           <div class="text--01__box">

@@ -13,7 +13,7 @@ class Pricing extends Component {
 
   render() {
     return (
-      <div class="pricing-03">
+      <div class="pricing-03" id="pricing">
         <div class="pricing-03__container container container--large">
           <div class="pricing-03__wrapper">
             <div class="pricing-03__info">
